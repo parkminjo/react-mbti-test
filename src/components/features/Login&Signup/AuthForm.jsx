@@ -1,40 +1,122 @@
-import { Link } from "react-router-dom";
-import { register } from "../../../api/auth";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { login, register } from "../../../api/auth";
+import { toast } from "react-toastify";
+import { ERROR_MESSAGES } from "../../../constants/errorMessages";
 
-const AuthForm = ({ type }) => {
-  const isLogin = type === "login";
+const AuthForm = () => {
+  /** 경로에 따라 로그인/회원가입 로직이 달라짐 */
+  const location = useLocation();
+  const type = location.pathname;
+  const isLoginType = type === "/login";
 
-  register();
+  const navigate = useNavigate();
+
+  /** State */
+  const [inputValue, setInputValue] = useState({
+    id: "",
+    password: "",
+    passwordCheck: "",
+    nickname: "",
+  });
+  const { id, password, passwordCheck, nickname } = inputValue;
+
+  /** Function */
+  const reset = () => {
+    setInputValue({
+      id: "",
+      password: "",
+      passwordCheck: "",
+      nickname: "",
+    });
+  };
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setInputValue((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const isLogin = await login({ id, password });
+    if (isLogin) {
+      reset();
+      navigate("/");
+    }
+  };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    if (passwordCheck !== password) {
+      toast.error(ERROR_MESSAGES.PASSWORD_CHECK);
+      return;
+    }
+
+    const isSignup = await register({ id, password, nickname });
+    if (isSignup) {
+      reset();
+      navigate("/login");
+    }
+  };
 
   /** UI */
   return (
     <div className={containerStyle}>
       <h1 className="text-2xl font-semibold text-center">
-        {isLogin ? "로그인" : "회원가입"}
+        {isLoginType ? "로그인" : "회원가입"}
       </h1>
-      <form className={formStyle}>
-        <input type="text" placeholder="아이디" className={inputStyle} />
-        <input type="password" placeholder="비밀번호" className={inputStyle} />
-        {!isLogin && (
+      <form
+        onSubmit={isLoginType ? handleLogin : handleSignup}
+        className={formStyle}
+      >
+        <input
+          type="text"
+          placeholder="아이디"
+          id="id"
+          value={id}
+          onChange={handleChange}
+          className={inputStyle}
+        />
+        <input
+          type="password"
+          placeholder="비밀번호"
+          id="password"
+          value={password}
+          onChange={handleChange}
+          className={inputStyle}
+        />
+        {!isLoginType && (
           <>
             <input
               type="password"
               placeholder="비밀번호 확인"
+              id="passwordCheck"
+              value={passwordCheck}
+              onChange={handleChange}
               className={inputStyle}
             />
-            <input type="text" placeholder="닉네임" className={inputStyle} />
+            <input
+              type="text"
+              placeholder="닉네임"
+              id="nickname"
+              value={nickname}
+              onChange={handleChange}
+              className={inputStyle}
+            />
           </>
         )}
         <button className={buttonStyle}>
-          {isLogin ? "로그인하기" : "가입하기"}
+          {isLoginType ? "로그인하기" : "가입하기"}
         </button>
       </form>
       <div className="flex gap-1">
         <span>
-          {isLogin ? "계정이 없으신가요?" : "이미 계정이 있으신가요?"}
+          {isLoginType ? "계정이 없으신가요?" : "이미 계정이 있으신가요?"}
         </span>
-        <Link to={isLogin ? "/signup" : "/login"} className="text-blue-500">
-          {isLogin ? "회원가입" : "로그인"}
+        <Link to={isLoginType ? "/signup" : "/login"} className="text-blue-500">
+          {isLoginType ? "회원가입" : "로그인"}
         </Link>
       </div>
     </div>
