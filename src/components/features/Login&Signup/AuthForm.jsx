@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { register } from "../../../api/auth";
 
 const AuthForm = ({ type }) => {
   const isLogin = type === "login";
+
+  register();
 
   /** UI */
   return (
@@ -48,7 +51,7 @@ const formStyle =
   "flex flex-col items-center gap-4 w-[400px] bg-gray-100 rounded-lg p-5";
 
 const inputStyle =
-  "w-[320px] h-[40px] p-6 rounded-lg border-2 border-solid border-gray-300";
+  "w-[320px] h-[40px] p-6 rounded-lg border-2 border-solid border-gray-300 hover:border-gray-400";
 
 const buttonStyle =
-  "w-[320px] p-4 rounded-lg leading-none bg-blue-500 text-white";
+  "w-[320px] p-4 rounded-lg leading-none bg-blue-500 text-white hover:bg-blue-600";

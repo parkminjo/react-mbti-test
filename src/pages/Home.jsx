@@ -16,12 +16,14 @@ const Home = () => {
         })}
       </div>
       <Link to={"/test"}>
-        <button className="w-[200px] rounded-full p-3 text-white bg-blue-500">
-          내 셩격 알아보러 가기
-        </button>
+        <button className={buttonStyle}>내 셩격 알아보러 가기</button>
       </Link>
     </div>
   );
 };
 
 export default Home;
+
+/** Tailwind Style */
+const buttonStyle =
+  "w-[200px] rounded-full p-3 text-white bg-blue-500 hover:bg-blue-600";
