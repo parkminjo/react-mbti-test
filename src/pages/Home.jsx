@@ -16,7 +16,7 @@ const Home = () => {
         })}
       </div>
       <Link to={"/test"}>
-        <button className="w-[200px] rounded-full p-3 text-white bg-blue-400">
+        <button className="w-[200px] rounded-full p-3 text-white bg-blue-500">
           내 셩격 알아보러 가기
         </button>
       </Link>
