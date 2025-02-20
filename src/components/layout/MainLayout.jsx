@@ -3,9 +3,9 @@ import Header from "./Header";
 
 const MainLayout = () => {
   return (
-    <div className="h-screen">
+    <div className="h-full flex flex-col justify-between">
       <Header />
-      <div className="flex justify-center items-center mx-24 pt-10">
+      <div className="mx-8 pt-10 flex justify-center">
         <Outlet />
       </div>
     </div>
