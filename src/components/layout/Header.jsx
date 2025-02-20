@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className="px-24 py-3 text-white bg-black">
-      <ul className="flex justify-between">
+      <ul className="flex justify-between items-center">
         <li className="font-semibold text-2xl">
           <Link to={"/"}>MBTI</Link>
         </li>
