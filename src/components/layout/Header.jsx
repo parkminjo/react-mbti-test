@@ -7,7 +7,7 @@ const Header = () => {
         <li className="font-semibold text-2xl">
           <Link to={"/"}>MBTI</Link>
         </li>
-        <li className="text-lg">
+        <li>
           <Link to={"/login"}>로그인</Link>
         </li>
       </ul>
