@@ -1,19 +1,37 @@
 import { Link } from "react-router-dom";
 
-const AuthForm = () => {
+const AuthForm = ({ type }) => {
+  const isLogin = type === "login";
+
   /** UI */
   return (
     <div className={containerStyle}>
-      <h1 className="text-2xl font-semibold text-center">로그인</h1>
+      <h1 className="text-2xl font-semibold text-center">
+        {isLogin ? "로그인" : "회원가입"}
+      </h1>
       <form className={formStyle}>
         <input type="text" placeholder="아이디" className={inputStyle} />
-        <input type="text" placeholder="비밀번호" className={inputStyle} />
-        <button className={buttonStyle}>로그인하기</button>
+        <input type="password" placeholder="비밀번호" className={inputStyle} />
+        {!isLogin && (
+          <>
+            <input
+              type="password"
+              placeholder="비밀번호 확인"
+              className={inputStyle}
+            />
+            <input type="text" placeholder="닉네임" className={inputStyle} />
+          </>
+        )}
+        <button className={buttonStyle}>
+          {isLogin ? "로그인하기" : "가입하기"}
+        </button>
       </form>
       <div className="flex gap-1">
-        <span>계정이 없으신가요?</span>
-        <Link to={"/signup"} className="text-blue-500">
-          회원가입
+        <span>
+          {isLogin ? "계정이 없으신가요?" : "이미 계정이 있으신가요?"}
+        </span>
+        <Link to={isLogin ? "/signup" : "/login"} className="text-blue-500">
+          {isLogin ? "회원가입" : "로그인"}
         </Link>
       </div>
     </div>
