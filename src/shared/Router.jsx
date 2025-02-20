@@ -5,17 +5,20 @@ import Profile from "../pages/Profile";
 import Signup from "../pages/Signup";
 import TestPage from "../pages/TestPage";
 import TestResultPage from "../pages/TestResultPage";
+import MainLayout from "../components/layout/MainLayout";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/Login" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/test" element={<TestPage />} />
-        <Route path="/test-results" element={<TestResultPage />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/Login" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/test" element={<TestPage />} />
+          <Route path="/test-results" element={<TestResultPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
