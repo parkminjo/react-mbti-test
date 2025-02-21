@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
-import { axiosInstance } from "./axiosInstance";
-import { INFO_MESSAGES } from "../constants/infoMessages";
 import { ERROR_MESSAGES } from "../constants/errorMessages";
+import { INFO_MESSAGES } from "../constants/infoMessages";
+import { authAPI } from "./axiosInstance";
 
 export const register = async (userData) => {
   try {
@@ -10,7 +10,7 @@ export const register = async (userData) => {
       return;
     }
 
-    const response = await axiosInstance.post("/register", userData);
+    const response = await authAPI.post("/register", userData);
     toast.info(response.data.message);
     return response.data.success;
   } catch (error) {
@@ -29,7 +29,7 @@ export const login = async (userData) => {
       return;
     }
 
-    const response = await axiosInstance.post("/login", userData);
+    const response = await authAPI.post("/login", userData);
     if (response.data.success) {
       toast.info(INFO_MESSAGES.LOGIN_SUCCESS);
       localStorage.setItem("accessToken", response.data.accessToken);
