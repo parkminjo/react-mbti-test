@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import Card from "../components/features/Home/Card";
+import { toast } from "react-toastify";
+import Card from "../components/features/home/Card";
+import { ERROR_MESSAGES } from "../constants/errorMessages";
 import { cardContentList } from "../data/home/cardContentList";
 import useAuthStore from "../zustand/authStore";
-import { toast } from "react-toastify";
-import { ERROR_MESSAGES } from "../constants/errorMessages";
 
 const Home = () => {
   const { isLogin } = useAuthStore((state) => state);

@@ -3,6 +3,11 @@ import { ERROR_MESSAGES } from "../constants/errorMessages";
 import { INFO_MESSAGES } from "../constants/infoMessages";
 import { authAPI } from "./axiosInstance";
 
+/**
+ * 회원가입
+ * @param {*} userData
+ * @returns response.data.success
+ */
 export const register = async (userData) => {
   /** 유효성 검증 */
   if (userData.id === "") {
@@ -36,6 +41,11 @@ export const register = async (userData) => {
   }
 };
 
+/**
+ * 로그인
+ * @param {*} userData
+ * @returns response.data.success
+ */
 export const login = async (userData) => {
   /** 유효성 검증 */
   if (userData.id === "") {
@@ -60,4 +70,20 @@ export const login = async (userData) => {
   }
 };
 
-export const updateProfile = async (formData) => {};
+export const getUserProfile = async (token) => {
+  try {
+    const response = await authAPI.get("/user", token);
+    console.log(response);
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+};
+
+export const updateProfile = async (formData) => {
+  try {
+    const response = await authAPI.patch("/profile", formData);
+    console.log(response);
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+};
