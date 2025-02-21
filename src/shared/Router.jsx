@@ -1,4 +1,11 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { toast } from "react-toastify";
 import MainLayout from "../components/layout/MainLayout";
 import { ERROR_MESSAGES } from "../constants/errorMessages";
@@ -8,12 +15,15 @@ import Profile from "../pages/Profile";
 import Signup from "../pages/Signup";
 import TestPage from "../pages/TestPage";
 import TestResultPage from "../pages/TestResultPage";
-import useAuthStore from "../zustand/authStore";
 
-const PrivateRoute = ({ element: Element, ...rest }) => {
-  const { isAuthenticated } = useAuthStore();
-  toast.error(ERROR_MESSAGES.LOGIN_CHECK);
-  return isAuthenticated ? <Element {...rest} /> : <Navigate to="/login" />;
+const PrivateRoute = () => {
+  const [isLogin, setIsLogin] = useState(!!localStorage.getItem("accessToken"));
+
+  useEffect(() => {
+    if (!isLogin) toast.error(ERROR_MESSAGES.LOGIN_CHECK);
+  }, [isLogin]);
+
+  return isLogin ? <Outlet /> : <Navigate to="/login" />;
 };
 
 const Router = () => {
