@@ -5,8 +5,24 @@ import { authAPI } from "./axiosInstance";
 
 export const register = async (userData) => {
   /** 유효성 검증 */
+  if (userData.id === "") {
+    toast.error(ERROR_MESSAGES.ID_REQUIRED_MESSAGE);
+    return;
+  }
+  if (userData.password === "") {
+    toast.error(ERROR_MESSAGES.PASSWORD_REQUIRED_MESSAGE);
+    return;
+  }
+  if (userData.passwordCheck === "") {
+    toast.error(ERROR_MESSAGES.PASSWORD_CHECK_REQUIRED_MESSAGE);
+    return;
+  }
   if (userData.passwordCheck !== userData.password) {
     toast.error(ERROR_MESSAGES.PASSWORD_CHECK);
+    return;
+  }
+  if (userData.nickname === "") {
+    toast.error(ERROR_MESSAGES.NICKNAME_REQUIRED_MESSAGE);
     return;
   }
 
