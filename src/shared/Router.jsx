@@ -18,20 +18,13 @@ import TestResultPage from "../pages/TestResultPage";
 
 const PrivateRoute = () => {
   const [isLogin] = useState(!!localStorage.getItem("accessToken"));
-
-  useEffect(() => {
-    if (!isLogin) toast.error(ERROR_MESSAGES.LOGIN_CHECK);
-  }, [isLogin]);
+  if (!isLogin) toast.error(ERROR_MESSAGES.LOGIN_CHECK);
 
   return isLogin ? <Outlet /> : <Navigate to="/login" />;
 };
 
 const PublicRoute = () => {
   const [isLogin] = useState(!!localStorage.getItem("accessToken"));
-
-  useEffect(() => {
-    if (!isLogin) toast.error(ERROR_MESSAGES.LOGIN_CHECK);
-  }, [isLogin]);
 
   return !isLogin ? <Outlet /> : <Navigate to="/" />;
 };
