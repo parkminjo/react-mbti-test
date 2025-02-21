@@ -67,7 +67,7 @@ export const questions = [
   },
   {
     id: 12,
-    question: "버스가 눈앞에서 떠났을 때, 당신은?",
+    question: "버스가 눈 앞에서 떠났을 때, 당신은?",
     options: ["하늘을 보며 한숨 쉰다", "뛰면서 기사님을 부른다"],
     type: "J/P",
   },
@@ -103,13 +103,13 @@ export const questions = [
   },
   {
     id: 18,
-    question: "길을 가다가 튜터를 마주친다면?",
-    options: ["바로 아는척을 한다", "무서워서 집으로 뛴다"],
+    question: "길을 가다가 아는 사람을 마주친다면?",
+    options: ["바로 아는 척을 한다", "무서워서 집으로 뛴다"],
     type: "T/F",
   },
   {
     id: 19,
-    question: "튜터가 내 이름을 잘못부르면?",
+    question: "최근에 알게 된 친구가 내 이름을 잘못부르면?",
     options: ["그냥 넘어간다", "이름을 다시 말해준다"],
     type: "S/N",
   },
