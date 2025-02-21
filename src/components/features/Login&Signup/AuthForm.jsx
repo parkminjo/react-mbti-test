@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login, register } from "../../../api/auth";
-import { toast } from "react-toastify";
-import { ERROR_MESSAGES } from "../../../constants/errorMessages";
 
 const AuthForm = () => {
   /** 경로에 따라 로그인/회원가입 로직이 달라짐 */

@@ -26,6 +26,7 @@ export const register = async (userData) => {
     return;
   }
 
+  /** 회원가입 진행 */
   try {
     const response = await authAPI.post("/register", userData);
     toast.info(response.data.message);
@@ -46,6 +47,7 @@ export const login = async (userData) => {
     return;
   }
 
+  /** 로그인 진행 */
   try {
     const response = await authAPI.post("/login", userData);
     if (response.data.success) {

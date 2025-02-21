@@ -3,7 +3,6 @@ import Card from "../components/features/Home/Card";
 import { cardContentList } from "../data/home/cardContentList";
 
 const Home = () => {
-  /** UI */
   return (
     <div className="w-full md:w-1024 flex flex-col justify-center items-center">
       <h1 className={TitleStyle}>무료 성격 테스트</h1>

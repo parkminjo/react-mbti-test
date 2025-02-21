@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  /** UI */
   return (
     <div className="px-8 text-white bg-black p-4">
       <div className="flex mx-auto justify-between items-center">
