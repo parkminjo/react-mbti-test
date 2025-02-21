@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
 import Card from "../components/features/Home/Card";
 import { cardContentList } from "../data/home/cardContentList";
+import useAuthStore from "../zustand/authStore";
+import { toast } from "react-toastify";
+import { ERROR_MESSAGES } from "../constants/errorMessages";
 
 const Home = () => {
+  const { isLogin } = useAuthStore((state) => state);
+
+  const handleClick = () => {
+    if (!isLogin) {
+      toast.error(ERROR_MESSAGES.LOGIN_CHECK);
+    }
+  };
+
   return (
     <div className="w-full md:w-1024 flex flex-col justify-center items-center">
       <h1 className={TitleStyle}>무료 성격 테스트</h1>
@@ -15,7 +26,9 @@ const Home = () => {
         })}
       </div>
       <Link to={"/test"}>
-        <button className={buttonStyle}>내 셩격 알아보러 가기</button>
+        <button onClick={handleClick} className={buttonStyle}>
+          내 셩격 알아보러 가기
+        </button>
       </Link>
     </div>
   );
