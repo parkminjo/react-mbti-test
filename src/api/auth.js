@@ -32,6 +32,7 @@ export const login = async (userData) => {
     const response = await authClient.post("/login", userData);
     if (response.data.success) {
       toast.info(INFO_MESSAGES.LOGIN_SUCCESS);
+      localStorage.setItem("accessToken", response.data.accessToken);
       return response.data.success;
     }
   } catch (error) {
