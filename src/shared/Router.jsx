@@ -17,7 +17,7 @@ import TestPage from "../pages/TestPage";
 import TestResultPage from "../pages/TestResultPage";
 
 const PrivateRoute = () => {
-  const [isLogin, setIsLogin] = useState(!!localStorage.getItem("accessToken"));
+  const [isLogin] = useState(!!localStorage.getItem("accessToken"));
 
   useEffect(() => {
     if (!isLogin) toast.error(ERROR_MESSAGES.LOGIN_CHECK);
@@ -26,14 +26,26 @@ const PrivateRoute = () => {
   return isLogin ? <Outlet /> : <Navigate to="/login" />;
 };
 
+const PublicRoute = () => {
+  const [isLogin] = useState(!!localStorage.getItem("accessToken"));
+
+  useEffect(() => {
+    if (!isLogin) toast.error(ERROR_MESSAGES.LOGIN_CHECK);
+  }, [isLogin]);
+
+  return !isLogin ? <Outlet /> : <Navigate to="/" />;
+};
+
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route element={<PublicRoute />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Route>
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/test" element={<TestPage />} />
