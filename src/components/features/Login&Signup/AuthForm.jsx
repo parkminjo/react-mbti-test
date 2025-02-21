@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login, register } from "../../../api/auth";
+import useAuthStore from "../../../zustand/authStore";
 
 const AuthForm = () => {
   /** 경로에 따라 로그인/회원가입 로직이 달라짐 */
   const location = useLocation();
   const mode = location.pathname;
   const isLoginMode = mode === "/login";
+
+  const { setIsLogin } = useAuthStore((state) => state);
 
   const navigate = useNavigate();
 
@@ -40,6 +43,7 @@ const AuthForm = () => {
     const isLogin = await login({ id, password });
     if (isLogin) {
       reset();
+      setIsLogin(true);
       navigate("/");
     }
   };

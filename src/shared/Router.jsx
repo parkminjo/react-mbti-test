@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   BrowserRouter,
   Navigate,
@@ -6,26 +5,22 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { toast } from "react-toastify";
 import MainLayout from "../components/layout/MainLayout";
-import { ERROR_MESSAGES } from "../constants/errorMessages";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import Signup from "../pages/Signup";
 import TestPage from "../pages/TestPage";
 import TestResultPage from "../pages/TestResultPage";
+import useAuthStore from "../zustand/authStore";
 
 const PrivateRoute = () => {
-  const [isLogin] = useState(!!localStorage.getItem("accessToken"));
-  if (!isLogin) toast.error(ERROR_MESSAGES.LOGIN_CHECK);
-
+  const { isLogin } = useAuthStore((state) => state);
   return isLogin ? <Outlet /> : <Navigate to="/login" />;
 };
 
 const PublicRoute = () => {
-  const [isLogin] = useState(!!localStorage.getItem("accessToken"));
-
+  const { isLogin } = useAuthStore((state) => state);
   return !isLogin ? <Outlet /> : <Navigate to="/" />;
 };
 
