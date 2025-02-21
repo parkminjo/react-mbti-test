@@ -49,12 +49,7 @@ const AuthForm = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    if (passwordCheck !== password) {
-      toast.error(ERROR_MESSAGES.PASSWORD_CHECK);
-      return;
-    }
-
-    const isSignup = await register({ id, password, nickname });
+    const isSignup = await register({ id, password, passwordCheck, nickname });
     if (isSignup) {
       reset();
       navigate("/login");

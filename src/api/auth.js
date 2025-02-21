@@ -5,6 +5,11 @@ import { ERROR_MESSAGES } from "../constants/errorMessages";
 
 export const register = async (userData) => {
   try {
+    if (userData.passwordCheck !== userData.password) {
+      toast.error(ERROR_MESSAGES.PASSWORD_CHECK);
+      return;
+    }
+
     const response = await authClient.post("/register", userData);
     toast.info(response.data.message);
     return response.data.success;
