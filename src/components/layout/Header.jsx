@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import useAuthStore from "../../zustand/authStore";
-import { toast } from "react-toastify";
-import { INFO_MESSAGES } from "../../constants/infoMessages";
 
 const Header = () => {
   const { isLogin, setIsLogin } = useAuthStore((state) => state);
@@ -9,7 +7,6 @@ const Header = () => {
   const handleLogout = () => {
     setIsLogin(false);
     localStorage.removeItem("accessToken");
-    toast.info(INFO_MESSAGES.LOGOUT_SUCCESS);
   };
 
   /** UI */
@@ -20,11 +17,28 @@ const Header = () => {
           MBTI
         </Link>
         {isLogin ? (
-          <button onClick={handleLogout} className="hover:text-gray-300">
-            로그아웃
-          </button>
+          <div className="flex gap-5">
+            <Link to={"/profile"} className="text-gray-300 hover:text-blue-400">
+              프로필
+            </Link>
+            <Link to={"/test"} className="text-gray-300 hover:text-blue-400">
+              테스트
+            </Link>
+            <Link
+              to={"/test-results"}
+              className="text-gray-300 hover:text-blue-400"
+            >
+              결과 보기
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="text-gray-300 hover:text-white"
+            >
+              로그아웃
+            </button>
+          </div>
         ) : (
-          <Link to={"/login"} className="hover:text-gray-300">
+          <Link to={"/login"} className="text-gray-300 hover:text-white">
             로그인
           </Link>
         )}

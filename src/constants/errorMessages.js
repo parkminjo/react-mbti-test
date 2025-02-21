@@ -4,5 +4,5 @@ export const ERROR_MESSAGES = {
   PASSWORD_CHECK_REQUIRED_MESSAGE: "비밀번호을 확인해주세요.",
   NICKNAME_REQUIRED_MESSAGE: "닉네임을 입력해주세요.",
   PASSWORD_CHECK: "비밀번호가 일치하지 않습니다.",
-  LOGIN_CHECK: "로그인을 해주세요!",
+  LOGIN_CHECK: "로그인이 필요합니다.",
 };

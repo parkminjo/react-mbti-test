@@ -1,5 +1,7 @@
+import TestForm from "../components/features/test-page/TestForm";
+
 const TestPage = () => {
-  return <div>MBTI 테스트 페이지</div>;
+  return <TestForm />;
 };
 
 export default TestPage;
