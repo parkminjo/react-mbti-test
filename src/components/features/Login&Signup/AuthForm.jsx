@@ -5,8 +5,8 @@ import { login, register } from "../../../api/auth";
 const AuthForm = () => {
   /** 경로에 따라 로그인/회원가입 로직이 달라짐 */
   const location = useLocation();
-  const type = location.pathname;
-  const isLoginType = type === "/login";
+  const mode = location.pathname;
+  const isLoginMode = mode === "/login";
 
   const navigate = useNavigate();
 
@@ -58,10 +58,10 @@ const AuthForm = () => {
   return (
     <div className={containerStyle}>
       <h1 className="text-2xl font-semibold text-center">
-        {isLoginType ? "로그인" : "회원가입"}
+        {isLoginMode ? "로그인" : "회원가입"}
       </h1>
       <form
-        onSubmit={isLoginType ? handleLogin : handleSignup}
+        onSubmit={isLoginMode ? handleLogin : handleSignup}
         className={formStyle}
       >
         <input
@@ -80,7 +80,7 @@ const AuthForm = () => {
           onChange={handleChange}
           className={inputStyle}
         />
-        {!isLoginType && (
+        {!isLoginMode && (
           <>
             <input
               type="password"
@@ -101,15 +101,15 @@ const AuthForm = () => {
           </>
         )}
         <button className={buttonStyle}>
-          {isLoginType ? "로그인하기" : "가입하기"}
+          {isLoginMode ? "로그인하기" : "가입하기"}
         </button>
       </form>
       <div className="flex gap-1">
         <span>
-          {isLoginType ? "계정이 없으신가요?" : "이미 계정이 있으신가요?"}
+          {isLoginMode ? "계정이 없으신가요?" : "이미 계정이 있으신가요?"}
         </span>
-        <Link to={isLoginType ? "/signup" : "/login"} className="text-blue-500">
-          {isLoginType ? "회원가입" : "로그인"}
+        <Link to={isLoginMode ? "/signup" : "/login"} className="text-blue-500">
+          {isLoginMode ? "회원가입" : "로그인"}
         </Link>
       </div>
     </div>
