@@ -4,7 +4,7 @@ import { ERROR_MESSAGES } from "../constants/errorMessages";
 
 export const getTestResults = async () => {
   try {
-    const response = await jsonAPI.get();
+    const response = await jsonAPI.get("/testResults");
     return response.data;
   } catch (error) {
     toast.error(ERROR_MESSAGES.TEST_RESULTS, error);
@@ -13,8 +13,7 @@ export const getTestResults = async () => {
 
 export const createTestResult = async (resultData) => {
   try {
-    const response = await jsonAPI.post(resultData);
-    console.log(response);
+    await jsonAPI.post("/testResults", resultData);
   } catch (error) {
     console.log(error);
   }

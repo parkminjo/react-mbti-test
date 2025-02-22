@@ -1,8 +1,11 @@
 {
   "testResults": [
     {
-      "mbti": "INTP",
-      "nickname": "감자"
+      "id": "81cc",
+      "nickname": "해공",
+      "mbtiResult": "INFP",
+      "userId": "home1204",
+      "date": "2025. 2. 22. 오후 3:20:50"
     }
   ]
 }

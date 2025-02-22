@@ -7,26 +7,33 @@ import useAuthStore from "../../../zustand/authStore";
 import { getUserProfile } from "../../../api/auth";
 
 const TestForm = () => {
+  const navigate = useNavigate();
+
   const [answers, setAnswers] = useState(
     Array(questions.length).fill({ type: "", answer: "" })
   );
 
   const { accessToken } = useAuthStore((state) => state);
-  getUserProfile(accessToken);
-
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const mbtiResult = calculateMBTI(answers);
-    createTestResult({ ...answers });
-    navigate(`/my-test-result?mbti=${mbtiResult}`);
-  };
 
   const handleChange = (i, type, option) => {
     const newAnswers = [...answers];
     newAnswers[i] = { type, answer: option };
     setAnswers(newAnswers);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { id, nickname } = await getUserProfile(accessToken);
+    const mbtiResult = calculateMBTI(answers);
+
+    createTestResult({
+      nickname,
+      mbtiResult,
+      userId: id,
+      date: new Date().toLocaleString("ko-KR"),
+    });
+    navigate(`/my-test-result?mbti=${mbtiResult}`);
   };
 
   return (

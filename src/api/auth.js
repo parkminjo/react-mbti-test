@@ -34,8 +34,11 @@ export const register = async (userData) => {
   /** 회원가입 진행 */
   try {
     const response = await authAPI.post("/register", userData);
+    const isSignupSuccess = response.data.success;
+
     toast.info(response.data.message);
-    return response.data.success;
+
+    return isSignupSuccess;
   } catch (error) {
     toast.error(error.response.data.message);
   }
@@ -60,16 +63,24 @@ export const login = async (userData) => {
   /** 로그인 진행 */
   try {
     const response = await authAPI.post("/login", userData);
-    if (response.data.success) {
+    const isLoginSuccess = response.data.success;
+
+    if (isLoginSuccess) {
       localStorage.setItem("accessToken", response.data.accessToken);
+
       toast.info(INFO_MESSAGES.LOGIN_SUCCESS);
-      return response.data.success;
+
+      return isLoginSuccess;
     }
   } catch (error) {
     toast.error(error.response.data.message);
   }
 };
 
+/**
+ * 사용자 정보 가져오기
+ * @param {*} token
+ */
 export const getUserProfile = async (token) => {
   try {
     const response = await authAPI.get("/user", {
@@ -77,7 +88,8 @@ export const getUserProfile = async (token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response);
+
+    return response.data;
   } catch (error) {
     toast.error(error.response.data.message);
   }
