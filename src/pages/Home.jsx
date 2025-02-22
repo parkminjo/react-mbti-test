@@ -38,7 +38,7 @@ export default Home;
 
 /** Tailwind Style */
 const buttonStyle =
-  "w-[200px] rounded-full p-3 text-white bg-blue-500 hover:bg-blue-600";
+  "w-[200px] rounded-full p-3 text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";
 
 const TitleStyle = "text-5xl font-semibold mb-5";
 

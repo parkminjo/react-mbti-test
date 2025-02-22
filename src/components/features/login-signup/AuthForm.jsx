@@ -130,7 +130,7 @@ const formStyle =
   "flex flex-col items-center gap-4 w-[400px] bg-gray-100 rounded-lg p-5";
 
 const inputStyle =
-  "w-[320px] h-[40px] p-6 rounded-lg border-2 border-solid border-gray-300 hover:border-gray-400";
+  "w-[320px] h-[40px] p-6 rounded-lg border-2 border-solid border-gray-300 transition delay-100 duration-200 ease-in-out hover:border-gray-400";
 
 const buttonStyle =
-  "w-[320px] p-4 rounded-lg leading-none bg-blue-500 text-white hover:bg-blue-600";
+  "w-[320px] p-4 rounded-lg leading-none bg-blue-500 text-white transition delay-100 duration-200 ease-in-out  hover:bg-blue-600";

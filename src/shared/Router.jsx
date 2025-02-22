@@ -10,9 +10,10 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import Signup from "../pages/Signup";
+import TestAllResultPage from "../pages/TestAllResultPage";
 import TestPage from "../pages/TestPage";
-import TestResultPage from "../pages/TestResultPage";
 import useAuthStore from "../zustand/authStore";
+import MyTestResult from "../pages/MyTestResult";
 
 const PrivateRoute = () => {
   const { isLogin } = useAuthStore((state) => state);
@@ -37,7 +38,8 @@ const Router = () => {
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/test" element={<TestPage />} />
-            <Route path="/test-results" element={<TestResultPage />} />
+            <Route path="/test-my-result" element={<MyTestResult />} />
+            <Route path="/test-results" element={<TestAllResultPage />} />
           </Route>
         </Route>
       </Routes>
