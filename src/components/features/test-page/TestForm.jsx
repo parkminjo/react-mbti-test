@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createTestResult } from "../../../api/testResults";
 import { questions } from "../../../data/testpage/question";
 import { calculateMBTI } from "../../../utils/mbtiCalculator";
-import { useState } from "react";
 
 const TestForm = () => {
   const [answers, setAnswers] = useState(
@@ -13,6 +14,7 @@ const TestForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const mbtiResult = calculateMBTI(answers);
+    createTestResult(answers);
     navigate(`/my-test-result?mbti=${mbtiResult}`);
   };
 

@@ -1,11 +1,13 @@
+import { toast } from "react-toastify";
 import { jsonAPI } from "./axiosInstance";
+import { ERROR_MESSAGES } from "../constants/errorMessages";
 
 export const getTestResults = async () => {
   try {
     const response = await jsonAPI.get();
     return response.data;
   } catch (error) {
-    console.log(error);
+    toast.error(ERROR_MESSAGES.TEST_RESULTS, error);
   }
 };
 
