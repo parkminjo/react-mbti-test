@@ -35,13 +35,13 @@ const TestForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { id, nickname } = userInfo;
+    const { userId, nickname } = userInfo;
     const mbtiResult = calculateMBTI(answers);
 
     addTestResult.mutate({
       nickname,
       mbtiResult,
-      userId: id,
+      userId,
       date: new Date().toLocaleString(KOREAN),
       visibility: false,
     });

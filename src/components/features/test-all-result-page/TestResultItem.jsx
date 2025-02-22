@@ -9,6 +9,9 @@ const TestResultItem = ({ result }) => {
   const myMbtiDescription = mbtiDescriptions[mbtiResult].split(":");
   const { userInfo } = useAuthStore((state) => state);
   const isOwner = userId === userInfo.userId;
+  console.log(userId);
+  console.log(userInfo.userId);
+  console.log(isOwner);
 
   const deleteMutation = useDeleteTestResult();
   const updateVisibilityMutation = useUpdateTestVisibility();
