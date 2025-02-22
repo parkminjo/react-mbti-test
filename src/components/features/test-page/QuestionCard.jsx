@@ -4,7 +4,7 @@ const QuestionCard = ({ question }) => {
       <p className="text-lg font-medium mb-3">{question.question}</p>
       <label
         htmlFor={question.id + "a"}
-        className="w-[400px] p-3 border-2 border-solid rounded-lg flex items-center mb-2 transition delay-100 duration-300 ease-in-out hover:border-gray-500"
+        className="w-[400px] p-3 border-2 border-solid rounded-lg flex items-center mb-2 transition delay-100 duration-200 ease-in-out hover:border-gray-500"
       >
         <input
           type="radio"
@@ -17,7 +17,7 @@ const QuestionCard = ({ question }) => {
 
       <label
         htmlFor={question.id + "b"}
-        className="w-[400px] p-3 border-2 border-solid rounded-lg flex items-center transition delay-100 duration-300 ease-in-out hover:border-gray-500"
+        className="w-[400px] p-3 border-2 border-solid rounded-lg flex items-center transition delay-100 duration-200 ease-in-out hover:border-gray-500"
       >
         <input
           type="radio"
