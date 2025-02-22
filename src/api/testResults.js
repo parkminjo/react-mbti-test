@@ -22,16 +22,15 @@ export const createTestResult = async (resultData) => {
 
 export const deleteTestResult = async (id) => {
   try {
-    console.log(JSON_URL + `/${id}`);
     await jsonAPI.delete(JSON_URL + `/${id}`);
   } catch (error) {
     console.log(error);
   }
 };
 
-export const updateTestResultVisibility = async (id, visibility) => {
+export const updateTestResultVisibility = async ({ id, visibility }) => {
   try {
-    await jsonAPI.patch(JSON_URL + `/${id}`, { visibility });
+    await jsonAPI.patch(JSON_URL + `/${id}`, { visibility: !visibility });
   } catch (error) {
     console.log(error);
   }

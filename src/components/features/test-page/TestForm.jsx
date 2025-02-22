@@ -3,10 +3,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserProfile } from "../../../api/auth";
 import { createTestResult } from "../../../api/testResults";
-import { KOREAN } from "../../../constants/constants";
-import { questions } from "../../../data/testpage/question";
+import { KOREAN, QUERY_KEY } from "../../../constants/constants";
+
 import { calculateMBTI } from "../../../utils/mbtiCalculator";
 import useAuthStore from "../../../zustand/authStore";
+import { questions } from "../../../data/test-page/question";
 
 const TestForm = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const TestForm = () => {
     Array(questions.length).fill({ type: "", answer: "" })
   );
 
-  const { accessToken } = useAuthStore((state) => state);
+  const { accessToken, setUser } = useAuthStore((state) => state);
 
   /** Function */
   const handleChange = (i, type, option) => {
@@ -28,7 +29,7 @@ const TestForm = () => {
   const addTestResult = useMutation({
     mutationFn: createTestResult,
     onSuccess: queryClient.invalidateQueries({
-      queryKey: ["testResults"],
+      queryKey: [QUERY_KEY],
     }),
   });
 
@@ -45,6 +46,7 @@ const TestForm = () => {
       date: new Date().toLocaleString(KOREAN),
       visibility: false,
     });
+    setUser({ userId: id, nickname, mbtiResult });
 
     navigate(`/my-test-result?mbti=${mbtiResult}`);
   };

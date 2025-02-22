@@ -12,6 +12,9 @@ const TestResultList = () => {
     queryFn: getTestResults,
   });
 
+  const publicTestResults = testResults?.filter((result) => result.visibility);
+
+  /** UI */
   if (isPending) {
     return <p>Loading...</p>;
   }
