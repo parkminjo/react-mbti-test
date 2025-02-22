@@ -6,14 +6,14 @@ import {
   Routes,
 } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
+import AllTestResultPage from "../pages/AllTestResultPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import MyTestResult from "../pages/MyTestResult";
 import Profile from "../pages/Profile";
 import Signup from "../pages/Signup";
-import TestAllResultPage from "../pages/TestAllResultPage";
 import TestPage from "../pages/TestPage";
 import useAuthStore from "../zustand/authStore";
-import MyTestResult from "../pages/MyTestResult";
 
 const PrivateRoute = () => {
   const { isLogin } = useAuthStore((state) => state);
@@ -39,7 +39,7 @@ const Router = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/test" element={<TestPage />} />
             <Route path="/my-test-result" element={<MyTestResult />} />
-            <Route path="/all-test-results" element={<TestAllResultPage />} />
+            <Route path="/all-test-results" element={<AllTestResultPage />} />
           </Route>
         </Route>
       </Routes>

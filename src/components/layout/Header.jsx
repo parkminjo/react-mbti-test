@@ -7,6 +7,7 @@ const Header = () => {
   const handleLogout = () => {
     setIsLogin(false);
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("authStore");
   };
 
   /** UI */
@@ -34,7 +35,7 @@ const Header = () => {
               테스트
             </Link>
             <Link
-              to={"/test-results"}
+              to={"/all-test-results"}
               className="text-gray-300 transition delay-100 duration-200 ease-in-out hover:text-blue-400"
             >
               결과 보기
