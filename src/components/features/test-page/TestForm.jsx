@@ -1,13 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUserProfile } from "../../../api/auth";
 import { createTestResult } from "../../../api/testResults";
 import { KOREAN, QUERY_KEY } from "../../../constants/constants";
 
+import { questions } from "../../../data/test-page/question";
 import { calculateMBTI } from "../../../utils/mbtiCalculator";
 import useAuthStore from "../../../zustand/authStore";
-import { questions } from "../../../data/test-page/question";
 
 const TestForm = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const TestForm = () => {
     Array(questions.length).fill({ type: "", answer: "" })
   );
 
-  const { accessToken, setUser } = useAuthStore((state) => state);
+  const { userInfo, setUserInfo } = useAuthStore((state) => state);
 
   /** Function */
   const handleChange = (i, type, option) => {
@@ -36,7 +35,7 @@ const TestForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { id, nickname } = await getUserProfile(accessToken);
+    const { id, nickname } = userInfo;
     const mbtiResult = calculateMBTI(answers);
 
     addTestResult.mutate({
@@ -46,7 +45,7 @@ const TestForm = () => {
       date: new Date().toLocaleString(KOREAN),
       visibility: false,
     });
-    setUser({ userId: id, nickname, mbtiResult });
+    setUserInfo({ mbtiResult });
 
     navigate(`/my-test-result?mbti=${mbtiResult}`);
   };
@@ -74,7 +73,7 @@ const TestForm = () => {
                     value={option}
                     onChange={() => handleChange(i, type, option)}
                     required
-                    className="h-4 text-blue-600 bg-gray-100 bidxrder-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600 mr-2"
+                    className="h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600 mr-2"
                   />
                   {option}
                 </label>

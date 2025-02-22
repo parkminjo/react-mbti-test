@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { login, register } from "../../../api/auth";
+import { getUserProfile, login, register } from "../../../api/auth";
 import useAuthStore from "../../../zustand/authStore";
 
 const AuthForm = () => {
@@ -9,7 +9,9 @@ const AuthForm = () => {
   const mode = location.pathname;
   const isLoginMode = mode === "/login";
 
-  const { setAccessToken, setIsLogin } = useAuthStore((state) => state);
+  const { setAccessToken, setIsLogin, setUserInfo } = useAuthStore(
+    (state) => state
+  );
 
   const navigate = useNavigate();
 
@@ -42,8 +44,12 @@ const AuthForm = () => {
 
     const isLogin = await login({ id, password });
     if (isLogin) {
-      setAccessToken(localStorage.getItem("accessToken"));
+      const accessToken = localStorage.getItem("accessToken");
+      setAccessToken(accessToken);
       setIsLogin(true);
+
+      const { id, nickname } = await getUserProfile(accessToken);
+      setUserInfo({ userId: id, nickname });
       reset();
       navigate("/");
     }

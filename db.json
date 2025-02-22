@@ -33,11 +33,53 @@
       "visibility": true
     },
     {
-      "id": "37c4",
+      "id": "22cf",
       "nickname": "해공",
-      "mbtiResult": "ISTP",
+      "mbtiResult": "ESFJ",
       "userId": "home1204",
-      "date": "2025. 2. 22. 오후 9:57:02",
+      "date": "2025. 2. 22. 오후 10:18:08",
+      "visibility": false
+    },
+    {
+      "id": "e692",
+      "nickname": "해공",
+      "mbtiResult": "ESFP",
+      "date": "2025. 2. 22. 오후 11:29:29",
+      "visibility": false
+    },
+    {
+      "id": "ed55",
+      "nickname": "해공",
+      "mbtiResult": "ENTJ",
+      "date": "2025. 2. 22. 오후 11:36:21",
+      "visibility": false
+    },
+    {
+      "id": "8d79",
+      "nickname": "해공",
+      "mbtiResult": "ESTJ",
+      "date": "2025. 2. 22. 오후 11:40:36",
+      "visibility": false
+    },
+    {
+      "id": "21a0",
+      "nickname": "해공",
+      "mbtiResult": "ESTJ",
+      "date": "2025. 2. 22. 오후 11:45:07",
+      "visibility": false
+    },
+    {
+      "id": "b99b",
+      "nickname": "해공",
+      "mbtiResult": "ENFP",
+      "date": "2025. 2. 23. 오전 12:04:33",
+      "visibility": false
+    },
+    {
+      "id": "5cb1",
+      "nickname": "해공",
+      "mbtiResult": "ISTJ",
+      "date": "2025. 2. 23. 오전 12:05:51",
       "visibility": false
     }
   ]
