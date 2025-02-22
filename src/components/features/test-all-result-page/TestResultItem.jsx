@@ -1,9 +1,5 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  deleteTestResult,
-  updateTestResultVisibility,
-} from "../../../api/testResults";
-import { QUERY_KEY } from "../../../constants/constants";
+import { useDeleteTestResult } from "../../../hooks/useDeleteTestResult";
+import { useUpdateTestVisibility } from "../../../hooks/useUpdateTestVisibility";
 import { mbtiDescriptions } from "../../../utils/mbtiCalculator";
 import useAuthStore from "../../../zustand/authStore";
 
@@ -14,25 +10,8 @@ const TestResultItem = ({ result }) => {
   const { userInfo } = useAuthStore((state) => state);
   const isOwner = userId === userInfo.userId;
 
-  const queryClient = useQueryClient();
-
-  const deleteMutation = useMutation({
-    mutationFn: deleteTestResult,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY],
-      });
-    },
-  });
-
-  const updateVisibilityMutation = useMutation({
-    mutationFn: updateTestResultVisibility,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY],
-      });
-    },
-  });
+  const deleteMutation = useDeleteTestResult();
+  const updateVisibilityMutation = useUpdateTestVisibility();
 
   return (
     <div className="max-w-[600px] bg-gray-200 rounded-lg flex flex-col gap-3 mb-10 p-5">

@@ -1,18 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { getTestResults } from "../../../api/testResults";
+import { useTestResults } from "../../../hooks/useTestResults";
 import TestResultItem from "./TestResultItem";
 
 const TestResultList = () => {
-  const {
-    data: testResults,
-    isPending,
-    isError,
-  } = useQuery({
-    queryKey: ["testResults"],
-    queryFn: getTestResults,
-  });
-
-  const publicTestResults = testResults?.filter((result) => result.visibility);
+  const { data: testResults, isPending, isError } = useTestResults();
 
   /** UI */
   if (isPending) {
