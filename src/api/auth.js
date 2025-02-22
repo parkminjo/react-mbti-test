@@ -80,6 +80,7 @@ export const login = async (userData) => {
 /**
  * 사용자 정보 가져오기
  * @param {*} token
+ * @returns response.data
  */
 export const getUserProfile = async (token) => {
   try {
@@ -95,10 +96,22 @@ export const getUserProfile = async (token) => {
   }
 };
 
-export const updateProfile = async (formData) => {
+/**
+ * 사용자 프로필 업데이트
+ * @param {*} formData
+ */
+export const updateProfile = async ({ token, nickname }) => {
   try {
-    const response = await authAPI.patch("/profile", formData);
-    console.log(response);
+    const response = await authAPI.patch(
+      "/profile",
+      { nickname },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    toast.info(response.data.message);
   } catch (error) {
     toast.error(error.response.data.message);
   }
