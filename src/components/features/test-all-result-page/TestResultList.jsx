@@ -25,7 +25,7 @@ const TestResultList = () => {
 
   return (
     <div>
-      {testResults.map((result) => {
+      {testResults.toReversed().map((result) => {
         return <TestResultItem key={result.id} result={result} />;
       })}
     </div>
