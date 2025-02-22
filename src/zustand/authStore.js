@@ -6,8 +6,9 @@ const useAuthStore = create(
   persist(
     immer((set) => {
       return {
-        accessToken: localStorage.getItem("accessToken"),
-        isLogin: false,
+        accessToken: null,
+        setAccessToken: (value) => set({ accessToken: value }),
+        isLogin: !!localStorage.getItem("accessToken"),
         setIsLogin: (value) => set({ isLogin: value }),
       };
     }),

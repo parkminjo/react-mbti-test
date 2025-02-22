@@ -9,7 +9,7 @@ const AuthForm = () => {
   const mode = location.pathname;
   const isLoginMode = mode === "/login";
 
-  const { setIsLogin } = useAuthStore((state) => state);
+  const { setAccessToken, setIsLogin } = useAuthStore((state) => state);
 
   const navigate = useNavigate();
 
@@ -42,8 +42,9 @@ const AuthForm = () => {
 
     const isLogin = await login({ id, password });
     if (isLogin) {
-      reset();
+      setAccessToken(localStorage.getItem("accessToken"));
       setIsLogin(true);
+      reset();
       navigate("/");
     }
   };

@@ -3,18 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { createTestResult } from "../../../api/testResults";
 import { questions } from "../../../data/testpage/question";
 import { calculateMBTI } from "../../../utils/mbtiCalculator";
+import useAuthStore from "../../../zustand/authStore";
+import { getUserProfile } from "../../../api/auth";
 
 const TestForm = () => {
   const [answers, setAnswers] = useState(
     Array(questions.length).fill({ type: "", answer: "" })
   );
 
+  const { accessToken } = useAuthStore((state) => state);
+  getUserProfile(accessToken);
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const mbtiResult = calculateMBTI(answers);
-    createTestResult(answers);
+    createTestResult({ ...answers });
     navigate(`/my-test-result?mbti=${mbtiResult}`);
   };
 

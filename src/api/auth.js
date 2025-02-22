@@ -72,7 +72,11 @@ export const login = async (userData) => {
 
 export const getUserProfile = async (token) => {
   try {
-    const response = await authAPI.get("/user", token);
+    const response = await authAPI.get("/user", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     console.log(response);
   } catch (error) {
     toast.error(error.response.data.message);
