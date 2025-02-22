@@ -32,6 +32,7 @@ const TestForm = () => {
       mbtiResult,
       userId: id,
       date: new Date().toLocaleString("ko-KR"),
+      visibility: false,
     });
     navigate(`/my-test-result?mbti=${mbtiResult}`);
   };

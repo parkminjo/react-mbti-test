@@ -19,6 +19,18 @@ export const createTestResult = async (resultData) => {
   }
 };
 
-export const deleteTestResult = async (id) => {};
+export const deleteTestResult = async (id) => {
+  try {
+    await jsonAPI.delete(`/testResults${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-export const updateTestResultVisibility = async (id, visibility) => {};
+export const updateTestResultVisibility = async (id, visibility) => {
+  try {
+    await jsonAPI.patch(`/testResults${id}`, visibility);
+  } catch (error) {
+    console.log(error);
+  }
+};
