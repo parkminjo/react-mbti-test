@@ -3,10 +3,10 @@ import { mbtiDescriptions } from "../utils/mbtiCalculator";
 
 const MyTestResult = () => {
   const [searchParams] = useSearchParams();
-  const mbti = searchParams.get("mbti");
+  const myMbti = searchParams.get("mbti");
 
   /** 해당 MBTI 설명 */
-  const myMbtiDescription = mbtiDescriptions[mbti].split(":");
+  const myMbtiDescription = mbtiDescriptions[myMbti].split(":");
 
   return (
     <div>
