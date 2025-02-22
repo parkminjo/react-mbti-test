@@ -1,3 +1,12 @@
 {
-  "testResults": []
+  "testResults": [
+    {
+      "id": "dbe6",
+      "nickname": "해공",
+      "mbtiResult": "ESTJ",
+      "userId": "home1204",
+      "date": "2025. 2. 22. 오후 8:05:46",
+      "visibility": false
+    }
+  ]
 }

@@ -1,13 +1,16 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getUserProfile } from "../../../api/auth";
 import { createTestResult } from "../../../api/testResults";
+import { KOREAN } from "../../../constants/constants";
 import { questions } from "../../../data/testpage/question";
 import { calculateMBTI } from "../../../utils/mbtiCalculator";
 import useAuthStore from "../../../zustand/authStore";
-import { getUserProfile } from "../../../api/auth";
 
 const TestForm = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const [answers, setAnswers] = useState(
     Array(questions.length).fill({ type: "", answer: "" })
@@ -15,11 +18,19 @@ const TestForm = () => {
 
   const { accessToken } = useAuthStore((state) => state);
 
+  /** Function */
   const handleChange = (i, type, option) => {
     const newAnswers = [...answers];
     newAnswers[i] = { type, answer: option };
     setAnswers(newAnswers);
   };
+
+  const addTestResult = useMutation({
+    mutationFn: createTestResult,
+    onSuccess: queryClient.invalidateQueries({
+      queryKey: ["testResults"],
+    }),
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,16 +38,18 @@ const TestForm = () => {
     const { id, nickname } = await getUserProfile(accessToken);
     const mbtiResult = calculateMBTI(answers);
 
-    createTestResult({
+    addTestResult.mutate({
       nickname,
       mbtiResult,
       userId: id,
-      date: new Date().toLocaleString("ko-KR"),
+      date: new Date().toLocaleString(KOREAN),
       visibility: false,
     });
+
     navigate(`/my-test-result?mbti=${mbtiResult}`);
   };
 
+  /** UI */
   return (
     <form onSubmit={handleSubmit}>
       {questions.map((q, i) => {
