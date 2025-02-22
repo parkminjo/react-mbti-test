@@ -13,7 +13,7 @@ const TestForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const mbtiResult = calculateMBTI(answers);
-    navigate(`/my-test-result?${mbtiResult}`);
+    navigate(`/my-test-result?mbti=${mbtiResult}`);
   };
 
   const handleChange = (i, type, option) => {
