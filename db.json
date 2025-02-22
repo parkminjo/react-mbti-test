@@ -1,11 +1,35 @@
 {
   "testResults": [
     {
-      "id": "c9c4",
-      "nickname": "해공",
+      "id": "1",
+      "nickname": "준현",
+      "mbtiResult": "ISFP",
+      "userId": "junehyun1234",
+      "date": "2025. 2. 19. 오후 2:10:18",
+      "visibility": true
+    },
+    {
+      "id": "2",
+      "nickname": "원장",
+      "mbtiResult": "ENFP",
+      "userId": "wonjang1234",
+      "date": "2025. 2. 21. 오전 9:32:11",
+      "visibility": true
+    },
+    {
+      "id": "3",
+      "nickname": "주희",
+      "mbtiResult": "ISFP",
+      "userId": "juhee1234",
+      "date": "2025. 2. 22. 오후 1:12:43",
+      "visibility": true
+    },
+    {
+      "id": "4",
+      "nickname": "솔비",
       "mbtiResult": "INTJ",
-      "userId": "home1204",
-      "date": "2025. 2. 22. 오후 9:03:08",
+      "userId": "solebee1234",
+      "date": "2025. 2. 22. 오후 7:47:33",
       "visibility": true
     }
   ]
