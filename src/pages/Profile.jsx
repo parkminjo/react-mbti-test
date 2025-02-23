@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { updateProfile } from "../api/auth";
 import useAuthStore from "../zustand/authStore";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { accessToken, userInfo, setUserInfo } = useAuthStore((state) => state);
@@ -42,7 +43,15 @@ const Profile = () => {
             onChange={handleChange}
             className={inputStyle}
           />
-          <label htmlFor="mbti">MBTI</label>
+          <div className="flex justify-between">
+            <label htmlFor="mbti">MBTI</label>
+            <Link
+              to={`/my-test-result?mbti=${userProfile.mbti}`}
+              className="text-gray-500"
+            >
+              내 결과 보러가기
+            </Link>
+          </div>
           <input
             type="text"
             placeholder="MBTI"
