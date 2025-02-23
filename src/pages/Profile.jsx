@@ -5,17 +5,27 @@ import useAuthStore from "../zustand/authStore";
 const Profile = () => {
   const { accessToken, userInfo, setUserInfo } = useAuthStore((state) => state);
 
-  const [nickname, setNickname] = useState(userInfo.nickname);
+  const [userProfile, setUserProfile] = useState({
+    nickname: userInfo.nickname,
+    mbti: userInfo.mbtiResult || null,
+  });
 
   const handleChange = (e) => {
-    setNickname(e.target.value);
+    const { id, value } = e.target;
+    setUserProfile({ ...userProfile, [id]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await updateProfile({ token: accessToken, nickname });
-    setUserInfo({ nickname });
+    await updateProfile({
+      token: accessToken,
+      nickname: userProfile.nickname,
+    });
+    setUserInfo({
+      nickname: userProfile.nickname,
+      mbtiResult: userProfile.mbti,
+    });
   };
 
   return (
@@ -28,14 +38,20 @@ const Profile = () => {
             type="text"
             placeholder="닉네임"
             id="nickname"
-            value={nickname}
+            value={userProfile.nickname}
             onChange={handleChange}
             className={inputStyle}
           />
-          <button
-            type="submit"
-            className="h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600"
-          >
+          <label htmlFor="mbti">MBTI</label>
+          <input
+            type="text"
+            placeholder="MBTI"
+            id="mbti"
+            value={userProfile.mbti}
+            onChange={handleChange}
+            className={inputStyle}
+          />
+          <button type="submit" className={buttonStyle}>
             프로필 업데이트
           </button>
         </div>
@@ -48,3 +64,5 @@ export default Profile;
 
 const inputStyle =
   "w-[320px] h-[40px] p-6 rounded-lg border-2 border-solid border-gray-300 transition delay-100 duration-200 ease-in-out hover:border-gray-400";
+const buttonStyle =
+  "h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";
