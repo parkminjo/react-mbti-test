@@ -48,7 +48,7 @@ const AuthForm = () => {
       setAccessToken(accessToken);
       setIsLogin(true);
 
-      const { id, nickname } = await getUserProfile(accessToken);
+      const { id, nickname } = await getUserProfile();
       setUserInfo({ userId: id, nickname });
       reset();
       navigate("/");

@@ -88,13 +88,9 @@ export const login = async (userData) => {
  * @param {*} token
  * @returns response.data
  */
-export const getUserProfile = async (token) => {
+export const getUserProfile = async () => {
   try {
-    const response = await authAPI.get(USER_END_POINT, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await authAPI.get(USER_END_POINT);
 
     return response.data;
   } catch (error) {
@@ -106,17 +102,9 @@ export const getUserProfile = async (token) => {
  * 사용자 프로필 업데이트
  * @param {*} formData
  */
-export const updateProfile = async ({ token, nickname }) => {
+export const updateProfile = async ({ nickname }) => {
   try {
-    const response = await authAPI.patch(
-      PROFILE_END_POINT,
-      { nickname },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await authAPI.patch(PROFILE_END_POINT, { nickname });
     toast.info(response.data.message);
   } catch (error) {
     toast.error(error.response.data.message);
