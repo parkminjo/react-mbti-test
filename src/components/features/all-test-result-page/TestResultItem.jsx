@@ -3,6 +3,7 @@ import { useUpdateTestVisibility } from "../../../hooks/useUpdateTestVisibility"
 import { TwText } from "../../../styles/TwTextStyle";
 import { mbtiDescriptions } from "../../../utils/mbtiCalculator";
 import useAuthStore from "../../../zustand/authStore";
+import KakaoShareButton from "./KakaoShareButton";
 
 const TestResultItem = ({ result }) => {
   const { id, nickname, mbtiResult, userId, date, visibility } = result;
@@ -33,6 +34,7 @@ const TestResultItem = ({ result }) => {
           >
             {visibility ? "비공개로 전환" : "공개로 전환"}
           </button>
+          <KakaoShareButton />
           <button
             onClick={() => deleteTestResultMutation.mutate(id)}
             className={deleteButtonStyle}
