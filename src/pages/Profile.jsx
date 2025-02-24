@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { updateProfile } from "../api/auth";
-import useAuthStore from "../zustand/authStore";
 import { Link } from "react-router-dom";
+import { updateProfile } from "../api/auth";
 import { TwText } from "../styles/TwTextStyle";
+import useAuthStore from "../zustand/authStore";
 
 const Profile = () => {
-  const { accessToken, userInfo, setUserInfo } = useAuthStore((state) => state);
+  const { userInfo, setUserInfo } = useAuthStore((state) => state);
 
   const [userProfile, setUserProfile] = useState({
     nickname: userInfo.nickname,

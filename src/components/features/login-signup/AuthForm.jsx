@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getUserProfile, login, register } from "../../../api/auth";
 import useAuthStore from "../../../zustand/authStore";
+import { TwText } from "../../../styles/TwTextStyle";
 
 const AuthForm = () => {
   /** 경로에 따라 로그인/회원가입 로직이 달라짐 */
@@ -68,7 +69,7 @@ const AuthForm = () => {
   /** UI */
   return (
     <div className={containerStyle}>
-      <h1 className="text-2xl font-semibold text-center">
+      <h1 className={TwText.subTitleStyle}>
         {isLoginMode ? "로그인" : "회원가입"}
       </h1>
       <form
