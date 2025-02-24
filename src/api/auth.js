@@ -2,6 +2,12 @@ import { toast } from "react-toastify";
 import { ERROR_MESSAGES } from "../constants/errorMessages";
 import { INFO_MESSAGES } from "../constants/infoMessages";
 import { authAPI } from "./axiosInstance";
+import {
+  LOGIN_END_POINT,
+  PROFILE_END_POINT,
+  SIGNUP_END_POINT,
+  USER_END_POINT,
+} from "../constants/authConstants";
 
 /**
  * 회원가입
@@ -33,7 +39,7 @@ export const register = async (userData) => {
 
   /** 회원가입 진행 */
   try {
-    const response = await authAPI.post("/register", userData);
+    const response = await authAPI.post(SIGNUP_END_POINT, userData);
     const isSignupSuccess = response.data.success;
 
     toast.info(response.data.message);
@@ -62,7 +68,7 @@ export const login = async (userData) => {
 
   /** 로그인 진행 */
   try {
-    const response = await authAPI.post("/login", userData);
+    const response = await authAPI.post(LOGIN_END_POINT, userData);
     const isLoginSuccess = response.data.success;
 
     if (isLoginSuccess) {
@@ -84,7 +90,7 @@ export const login = async (userData) => {
  */
 export const getUserProfile = async (token) => {
   try {
-    const response = await authAPI.get("/user", {
+    const response = await authAPI.get(USER_END_POINT, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -103,7 +109,7 @@ export const getUserProfile = async (token) => {
 export const updateProfile = async ({ token, nickname }) => {
   try {
     const response = await authAPI.patch(
-      "/profile",
+      PROFILE_END_POINT,
       { nickname },
       {
         headers: {
