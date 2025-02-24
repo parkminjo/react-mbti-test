@@ -26,7 +26,7 @@ const KakaoShareButton = ({ userInfo, buttonStyle }) => {
       },
       buttons: [
         {
-          title: "나도 테스트 하러가기",
+          title: "테스트 하러가기",
           link: {
             mobileWebUrl: vercelUrl,
           },
