@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ERROR_MESSAGES } from "../constants/errorMessages";
-import { cardContentList } from "../data/home/cardContentList";
 import useAuthStore from "../zustand/authStore";
 import { TwText } from "../styles/TwTextStyle";
-import Card from "../components/features/home/Card";
+import Card from "../components/features/main/Card";
+import { cardContentList } from "../data/main/cardContentList";
 
-const Home = () => {
+const Main = () => {
   /** State */
   const { isLogin } = useAuthStore((state) => state);
 
@@ -38,7 +38,7 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Main;
 
 /** Tailwind Style */
 const buttonStyle =

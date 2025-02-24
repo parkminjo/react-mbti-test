@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
 import AllTestResultPage from "../pages/AllTestResultPage";
-import Home from "../pages/Home";
 import Login from "../pages/Login";
+import Main from "../pages/Main";
 import MyTestResult from "../pages/MyTestResult";
 import Profile from "../pages/Profile";
 import Signup from "../pages/Signup";
@@ -30,7 +30,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Main />} />
           <Route element={<PublicRoute />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
