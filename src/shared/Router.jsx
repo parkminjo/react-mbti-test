@@ -14,6 +14,7 @@ import Profile from "../pages/Profile";
 import Signup from "../pages/Signup";
 import TestPage from "../pages/TestPage";
 import useAuthStore from "../zustand/authStore";
+import { PATH } from "../constants/routerPathConstants";
 
 const PrivateRoute = () => {
   const { isLogin } = useAuthStore((state) => state);
@@ -30,16 +31,19 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Main />} />
+          <Route path={PATH.MAIN} element={<Main />} />
           <Route element={<PublicRoute />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path={PATH.LOGIN} element={<Login />} />
+            <Route path={PATH.SIGNUP} element={<Signup />} />
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/test" element={<TestPage />} />
-            <Route path="/my-test-result" element={<MyTestResult />} />
-            <Route path="/all-test-results" element={<AllTestResultPage />} />
+            <Route path={PATH.PROFILE} element={<Profile />} />
+            <Route path={PATH.TEST} element={<TestPage />} />
+            <Route path={PATH.MY_TEST_RESULT} element={<MyTestResult />} />
+            <Route
+              path={PATH.ALL_TEST_RESULTS}
+              element={<AllTestResultPage />}
+            />
           </Route>
         </Route>
       </Routes>
