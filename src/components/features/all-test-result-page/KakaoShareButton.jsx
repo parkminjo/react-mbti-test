@@ -21,7 +21,7 @@ const KakaoShareButton = ({ userInfo }) => {
         description: `${nickname}의 MBTI는 ${mbtiResult}입니다.`,
         imageUrl: `${KAKAO_IMAGE_URL}`,
         link: {
-          mobileWebUrl: vercelUrl + `my-test-result?mbti=${mbtiResult}`,
+          mobileWebUrl: vercelUrl,
         },
       },
       buttons: [
