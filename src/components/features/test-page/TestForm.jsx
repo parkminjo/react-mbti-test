@@ -1,17 +1,17 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createTestResult } from "../../../api/testResults";
-import { KOREAN, QUERY_KEY } from "../../../constants/constants";
+import { KOREAN } from "../../../constants/constants";
 
 import { questions } from "../../../data/test-page/question";
+import { useAddTestResult } from "../../../hooks/useAddTestResult";
 import { calculateMBTI } from "../../../utils/mbtiCalculator";
 import useAuthStore from "../../../zustand/authStore";
 
 const TestForm = () => {
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
+  const addTestResultMutation = useAddTestResult();
 
+  /** State */
   const [answers, setAnswers] = useState(
     Array(questions.length).fill({ type: "", answer: "" })
   );
@@ -25,20 +25,13 @@ const TestForm = () => {
     setAnswers(newAnswers);
   };
 
-  const addTestResult = useMutation({
-    mutationFn: createTestResult,
-    onSuccess: queryClient.invalidateQueries({
-      queryKey: [QUERY_KEY],
-    }),
-  });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { userId, nickname } = userInfo;
     const mbtiResult = calculateMBTI(answers);
 
-    addTestResult.mutate({
+    addTestResultMutation.mutate({
       nickname,
       mbtiResult,
       userId,
@@ -61,11 +54,7 @@ const TestForm = () => {
             <p className="text-lg font-medium mb-4">{question}</p>
             {options.map((option, idx) => {
               return (
-                <label
-                  key={idx}
-                  htmlFor={option + idx}
-                  className="p-3 border-2 border-solid rounded-lg flex items-center mb-2 transition delay-100 duration-200 ease-in-out hover:border-gray-500"
-                >
+                <label key={idx} htmlFor={option + idx} className={labelStyle}>
                   <input
                     type="radio"
                     id={option + idx}
@@ -73,7 +62,7 @@ const TestForm = () => {
                     value={option}
                     onChange={() => handleChange(i, type, option)}
                     required
-                    className="h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600 mr-2"
+                    className={radioStyle}
                   />
                   {option}
                 </label>
@@ -82,10 +71,7 @@ const TestForm = () => {
           </div>
         );
       })}
-      <button
-        type="submit"
-        className="w-[400px] h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600"
-      >
+      <button type="submit" className={buttonStyle}>
         결과 확인하기
       </button>
     </form>
@@ -93,3 +79,13 @@ const TestForm = () => {
 };
 
 export default TestForm;
+
+/** Tailwind Style */
+const labelStyle =
+  "p-3 border-2 border-solid rounded-lg flex items-center mb-2 transition delay-100 duration-200 ease-in-out hover:border-gray-500";
+
+const radioStyle =
+  "h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600 mr-2";
+
+const buttonStyle =
+  "w-[400px] h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";

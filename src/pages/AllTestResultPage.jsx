@@ -1,4 +1,4 @@
-import TestResultList from "../components/features/test-all-result-page/TestResultList";
+import TestResultList from "../components/features/all-test-result-page/TestResultList";
 import { TwText } from "../styles/TwTextStyle";
 
 const AllTestResultPage = () => {
