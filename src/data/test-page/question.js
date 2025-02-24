@@ -50,7 +50,7 @@ export const questions = [
   {
     id: 9,
     question: "우산 없이 비를 맞게 됐을 때, 당신은?",
-    options: ["춤추면서 걷는다", "분노하며 우산을 산다"],
+    options: ["춤 추면서 걷는다", "근처 편의점에서 우산을 산다"],
     type: "E/I",
   },
   {
@@ -74,14 +74,17 @@ export const questions = [
   {
     id: 13,
     question: "지나가는 고양이가 당신을 쳐다볼 때, 당신은?",
-    options: ["눈싸움을 시작한다", "고양이에게 말을 건다"],
-    type: "E/I",
+    options: [
+      "고양이가 귀엽다고 생각한다",
+      "고양이와 나에게 걸어오는 상상을 한다",
+    ],
+    type: "S/N",
   },
   {
     id: 14,
     question: "술자리에서 술게임을 시작할 때, 당신은?",
     options: ["게임 룰을 적극적으로 설명한다", "구석에서 눈치 본다"],
-    type: "S/N",
+    type: "E/I",
   },
   {
     id: 15,
@@ -92,7 +95,7 @@ export const questions = [
   {
     id: 16,
     question: "길을 걷다 아는 사람을 봤을 때, 당신은?",
-    options: ["먼저 손을 흔든다", "아는 척하지 않는다"],
+    options: ["먼저 손을 흔든다", "못본 척 지나간다"],
     type: "E/I",
   },
   {
@@ -103,8 +106,8 @@ export const questions = [
   },
   {
     id: 18,
-    question: "길을 가다가 아는 사람을 마주친다면?",
-    options: ["바로 아는 척을 한다", "무서워서 집으로 뛴다"],
+    question: "친구가 차 사고가 났다고 말했을 때, 당신은?",
+    options: ["보험 들었냐고 먼저 물어본다", "다친 곳은 없냐고 먼저 물어본다"],
     type: "T/F",
   },
   {
@@ -115,8 +118,8 @@ export const questions = [
   },
   {
     id: 20,
-    question: "공짜로 주는 간식이 있다면, 당신은?",
-    options: ["두 개 이상 가져간다", "한 개만 가져간다"],
+    question: "한 달 뒤에 가게 되는 제주도 여행이 있을 때, 당신은?",
+    options: ["미리 계획을 짜둔다", "여행은 즉흥적인게 최고다"],
     type: "J/P",
   },
 ];
