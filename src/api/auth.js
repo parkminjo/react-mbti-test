@@ -39,10 +39,10 @@ export const register = async (userData) => {
 
   /** 회원가입 진행 */
   try {
-    const response = await authAPI.post(SIGNUP_END_POINT, userData);
-    const isSignupSuccess = response.data.success;
+    const { data } = await authAPI.post(SIGNUP_END_POINT, userData);
+    const isSignupSuccess = data.success;
 
-    toast.info(response.data.message);
+    toast.info(data.message);
 
     return isSignupSuccess;
   } catch (error) {
@@ -68,11 +68,11 @@ export const login = async (userData) => {
 
   /** 로그인 진행 */
   try {
-    const response = await authAPI.post(LOGIN_END_POINT, userData);
-    const isLoginSuccess = response.data.success;
+    const { data } = await authAPI.post(LOGIN_END_POINT, userData);
+    const isLoginSuccess = data.success;
 
     if (isLoginSuccess) {
-      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("accessToken", data.accessToken);
 
       toast.info(INFO_MESSAGES.LOGIN_SUCCESS);
 
@@ -90,9 +90,9 @@ export const login = async (userData) => {
  */
 export const getUserProfile = async () => {
   try {
-    const response = await authAPI.get(USER_END_POINT);
+    const { data } = await authAPI.get(USER_END_POINT);
 
-    return response.data;
+    return data;
   } catch (error) {
     toast.error(error.response.data.message);
   }
@@ -104,8 +104,8 @@ export const getUserProfile = async () => {
  */
 export const updateProfile = async ({ nickname }) => {
   try {
-    const response = await authAPI.patch(PROFILE_END_POINT, { nickname });
-    toast.info(response.data.message);
+    const { data } = await authAPI.patch(PROFILE_END_POINT, { nickname });
+    toast.info(data.message);
   } catch (error) {
     toast.error(error.response.data.message);
   }
