@@ -1,4 +1,4 @@
-export const JSON_URL = "/testResults";
+export const JSON_END_POINT = "/testResults";
 
 export const KOREAN = "ko-KR";
 

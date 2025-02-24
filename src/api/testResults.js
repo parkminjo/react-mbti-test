@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
+import { JSON_END_POINT } from "../constants/constants";
 import { ERROR_MESSAGES } from "../constants/errorMessages";
 import { jsonAPI } from "./axiosInstance";
-import { JSON_URL } from "../constants/constants";
 
 export const getTestResults = async () => {
   try {
@@ -14,7 +14,7 @@ export const getTestResults = async () => {
 
 export const createTestResult = async (resultData) => {
   try {
-    await jsonAPI.post(JSON_URL, resultData);
+    await jsonAPI.post(JSON_END_POINT, resultData);
   } catch (error) {
     console.log(error);
   }
@@ -22,7 +22,7 @@ export const createTestResult = async (resultData) => {
 
 export const deleteTestResult = async (id) => {
   try {
-    await jsonAPI.delete(JSON_URL + `/${id}`);
+    await jsonAPI.delete(JSON_END_POINT + `/${id}`);
   } catch (error) {
     console.log(error);
   }
@@ -30,7 +30,7 @@ export const deleteTestResult = async (id) => {
 
 export const updateTestResultVisibility = async ({ id, visibility }) => {
   try {
-    await jsonAPI.patch(JSON_URL + `/${id}`, { visibility: !visibility });
+    await jsonAPI.patch(JSON_END_POINT + `/${id}`, { visibility: !visibility });
   } catch (error) {
     console.log(error);
   }
