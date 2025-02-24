@@ -34,7 +34,7 @@ const TestResultItem = ({ result }) => {
           >
             {visibility ? "비공개로 전환" : "공개로 전환"}
           </button>
-          <KakaoShareButton />
+          <KakaoShareButton userInfo={(nickname, mbtiResult)} />
           <button
             onClick={() => deleteTestResultMutation.mutate(id)}
             className={deleteButtonStyle}

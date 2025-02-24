@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 const { Kakao } = window;
 
-const KakaoShareButton = () => {
+const KakaoShareButton = ({ nickname, mbtiResult }) => {
   const vercelUrl = "http://mbti-freetest.vercel.app/";
 
   useEffect(() => {
@@ -15,12 +15,11 @@ const KakaoShareButton = () => {
     Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "MBTI 테스트 결과",
-        description: "아메리카노, 빵, 케익",
-        imageUrl:
-          "https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
+        title: "MBTI 테스트 결과 공유",
+        description: `${nickname}의 MBTI는 ${mbtiResult}입니다.`,
+        imageUrl: "https://ifh.cc/g/YkWFfR.png",
         link: {
-          mobileWebUrl: vercelUrl,
+          mobileWebUrl: vercelUrl + `my-test-result?mbti=${mbtiResult}`,
         },
       },
       buttons: [
