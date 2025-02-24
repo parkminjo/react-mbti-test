@@ -5,13 +5,15 @@ import { TwText } from "../styles/TwTextStyle";
 import useAuthStore from "../zustand/authStore";
 
 const Profile = () => {
-  const { userInfo, setUserInfo } = useAuthStore((state) => state);
-
+  /** State */
   const [userProfile, setUserProfile] = useState({
     nickname: userInfo.nickname,
     mbti: userInfo.mbtiResult || "테스트를 진행해주세요.",
   });
 
+  const { userInfo, setUserInfo } = useAuthStore((state) => state);
+
+  /** Function */
   const handleChange = (e) => {
     const { id, value } = e.target;
     setUserProfile({ ...userProfile, [id]: value });

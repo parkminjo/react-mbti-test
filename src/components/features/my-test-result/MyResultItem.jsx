@@ -16,12 +16,14 @@ const MyResultItem = () => {
       >{`당신의 MBTI는 ${myMbtiDescription[0]}입니다.`}</h2>
       <p className="text-lg/8">{myMbtiDescription[1]}</p>
       <Link to={"/all-test-results"}>
-        <button className="w-[600px] h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600">
-          다른 사람 결과 보러 가기
-        </button>
+        <button className={buttonStyle}>다른 사람 결과 보러 가기</button>
       </Link>
     </div>
   );
 };
 
 export default MyResultItem;
+
+/** Tailwind Style */
+const buttonStyle =
+  "w-[600px] h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";
