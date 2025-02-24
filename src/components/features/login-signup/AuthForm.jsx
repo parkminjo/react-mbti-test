@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getUserProfile, login, register } from "../../../api/auth";
-import useAuthStore from "../../../zustand/authStore";
 import { TwText } from "../../../styles/TwTextStyle";
+import useAuthStore from "../../../zustand/authStore";
 
 const AuthForm = () => {
   /** 경로에 따라 로그인/회원가입 로직이 달라짐 */
@@ -10,9 +10,7 @@ const AuthForm = () => {
   const mode = location.pathname;
   const isLoginMode = mode === "/login";
 
-  const { setAccessToken, setIsLogin, setUserInfo } = useAuthStore(
-    (state) => state
-  );
+  const { setIsLogin, setUserInfo } = useAuthStore((state) => state);
 
   const navigate = useNavigate();
 
@@ -45,8 +43,6 @@ const AuthForm = () => {
 
     const isLogin = await login({ id, password });
     if (isLogin) {
-      const accessToken = localStorage.getItem("accessToken");
-      setAccessToken(accessToken);
       setIsLogin(true);
 
       const { id, nickname } = await getUserProfile();

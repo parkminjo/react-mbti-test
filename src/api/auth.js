@@ -73,7 +73,6 @@ export const login = async (userData) => {
 
     if (isLoginSuccess) {
       localStorage.setItem("accessToken", data.accessToken);
-
       toast.info(INFO_MESSAGES.LOGIN_SUCCESS);
 
       return isLoginSuccess;
