@@ -10,7 +10,7 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ToastContainer />
+      <ToastContainer autoClose={1000} />
       <App />
     </QueryClientProvider>
   </StrictMode>
