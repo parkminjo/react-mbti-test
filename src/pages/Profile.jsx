@@ -9,7 +9,7 @@ const Profile = () => {
 
   const [userProfile, setUserProfile] = useState({
     nickname: userInfo.nickname,
-    mbti: userInfo.mbtiResult || null,
+    mbti: userInfo.mbtiResult || "테스트를 진행해주세요.",
   });
 
   const handleChange = (e) => {
@@ -47,12 +47,18 @@ const Profile = () => {
           />
           <div className="flex justify-between">
             <label htmlFor="mbti">MBTI</label>
-            <Link
-              to={`/my-test-result?mbti=${userProfile.mbti}`}
-              className="text-gray-500"
-            >
-              내 결과 보러가기
-            </Link>
+            {!userInfo.mbtiResult ? (
+              <Link to={`/test`} className="text-gray-500">
+                테스트 하러가기
+              </Link>
+            ) : (
+              <Link
+                to={`/my-test-result?mbti=${userProfile.mbti}`}
+                className="text-gray-500"
+              >
+                내 결과 보러가기
+              </Link>
+            )}
           </div>
           <input
             type="text"
