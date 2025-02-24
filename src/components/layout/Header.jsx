@@ -23,7 +23,7 @@ const Header = () => {
           MBTI
         </Link>
         {isLogin ? (
-          <div className="flex gap-5">
+          <div className="flex gap-3 sm:gap-5">
             {navList.map(({ to, label }) => (
               <Link to={to} key={label} className={contentLinkStyle}>
                 {label}

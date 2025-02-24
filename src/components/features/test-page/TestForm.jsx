@@ -50,7 +50,7 @@ const TestForm = () => {
         const { id, question, options, type } = q;
 
         return (
-          <div key={id} className="w-[400px] mb-10">
+          <div key={id} className="w-full max-w-[400px] mb-10">
             <p className="text-lg font-medium mb-4">{question}</p>
             {options.map((option, idx) => {
               return (
@@ -88,4 +88,4 @@ const radioStyle =
   "h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600 mr-2";
 
 const buttonStyle =
-  "w-[400px] h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";
+  "w-full h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";
