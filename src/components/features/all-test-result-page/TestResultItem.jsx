@@ -32,7 +32,7 @@ const TestResultItem = ({ result }) => {
             onClick={() => updateVisibilityMutation.mutate({ id, visibility })}
             className={visibilityButtonStyle}
           >
-            {visibility ? "비공개로 전환" : "공개로 전환"}
+            {visibility ? "비공개 하기" : "공개 하기"}
           </button>
           <KakaoShareButton
             userInfo={{ nickname, mbtiResult }}
@@ -57,10 +57,10 @@ const containerStyle =
   "max-w-[600px] bg-gray-200 rounded-lg flex flex-col gap-3 mb-10 p-5";
 
 const visibilityButtonStyle =
-  "w-[120px] h-[40px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";
+  "w-[100px] sm:w-[100px] h-[40px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";
 
 const deleteButtonStyle =
-  "w-[60px] h-[40px] rounded-lg text-white bg-red-500 transition delay-100 duration-200 ease-in-out hover:bg-red-600";
+  "w-[50px] sm:w-[60px] h-[40px] rounded-lg text-white bg-red-500 transition delay-100 duration-200 ease-in-out hover:bg-red-600";
 
 const buttonStyle =
-  "w-[140px] bg-yellow-300 rounded-lg transition delay-100 duration-200 ease-in-out hover:bg-yellow-400";
+  "w-[120px] sm:w-[120px] bg-yellow-300 rounded-lg transition delay-100 duration-200 ease-in-out hover:bg-yellow-400";
