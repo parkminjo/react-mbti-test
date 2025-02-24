@@ -6,8 +6,7 @@ const Header = () => {
 
   const handleLogout = () => {
     setIsLogin(false);
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("authStore");
+    localStorage.clear();
   };
 
   /** UI */
