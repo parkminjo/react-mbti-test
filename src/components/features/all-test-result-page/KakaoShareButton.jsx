@@ -18,7 +18,7 @@ const KakaoShareButton = ({ userInfo, buttonStyle }) => {
       objectType: "feed",
       content: {
         title: "MBTI 테스트 결과 공유",
-        description: `${nickname}의 MBTI는 ${mbtiResult}입니다.`,
+        description: `${nickname}님의 MBTI는 ${mbtiResult}입니다.`,
         imageUrl: `${KAKAO_IMAGE_URL}`,
         link: {
           mobileWebUrl: vercelUrl,
