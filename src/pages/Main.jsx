@@ -31,7 +31,7 @@ const Main = () => {
       </div>
       <Link to={"/test"}>
         <button onClick={handleClick} className={buttonStyle}>
-          내 셩격 알아보러 가기
+          내 성격 알아보러 가기
         </button>
       </Link>
     </div>
