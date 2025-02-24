@@ -7,14 +7,17 @@ import useAuthStore from "../zustand/authStore";
 import { TwText } from "../styles/TwTextStyle";
 
 const Home = () => {
+  /** State */
   const { isLogin } = useAuthStore((state) => state);
 
+  /** Function */
   const handleClick = () => {
     if (!isLogin) {
       toast.error(ERROR_MESSAGES.LOGIN_CHECK);
     }
   };
 
+  /** UI */
   return (
     <div className="w-full md:w-1024 flex flex-col justify-center items-center">
       <h1 className={TwText.titleStyle}>무료 성격 테스트</h1>

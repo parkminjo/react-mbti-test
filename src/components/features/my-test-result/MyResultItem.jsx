@@ -9,6 +9,7 @@ const MyResultItem = () => {
   /** 해당 MBTI 설명 */
   const myMbtiDescription = mbtiDescriptions[myMbti].split(":");
 
+  /** UI */
   return (
     <div className="max-w-[600px] flex flex-col gap-5">
       <h2

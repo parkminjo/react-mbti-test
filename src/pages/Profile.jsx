@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { updateProfile } from "../api/auth";
+import { TEST_CHECK_MESSAGE } from "../constants/constants";
 import { TwText } from "../styles/TwTextStyle";
 import useAuthStore from "../zustand/authStore";
 
 const Profile = () => {
   /** State */
+  const { userInfo, setUserInfo } = useAuthStore((state) => state);
+
   const [userProfile, setUserProfile] = useState({
     nickname: userInfo.nickname,
-    mbti: userInfo.mbtiResult || "테스트를 진행해주세요.",
+    mbti: userInfo.mbtiResult || TEST_CHECK_MESSAGE,
   });
-
-  const { userInfo, setUserInfo } = useAuthStore((state) => state);
 
   /** Function */
   const handleChange = (e) => {
@@ -31,6 +32,7 @@ const Profile = () => {
     });
   };
 
+  /** UI */
   return (
     <div className="w-full flex flex-col items-center">
       <h2

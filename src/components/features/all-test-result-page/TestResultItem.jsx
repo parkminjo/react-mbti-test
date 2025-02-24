@@ -14,6 +14,7 @@ const TestResultItem = ({ result }) => {
   const deleteTestResultMutation = useDeleteTestResult();
   const updateVisibilityMutation = useUpdateTestVisibility();
 
+  /** UI */
   return (
     <div className={containerStyle}>
       <div className="flex justify-between items-baseline">

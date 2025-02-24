@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
 const MainLayout = () => {
-  /** UI */
   return (
     <div className="h-full flex flex-col justify-between">
       <Header />
