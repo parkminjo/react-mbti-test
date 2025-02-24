@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { KAKAO_IMAGE_URL } from "../../../constants/constants";
 const { Kakao } = window;
 
-const KakaoShareButton = ({ userInfo }) => {
+const KakaoShareButton = ({ userInfo, buttonStyle }) => {
   const { nickname, mbtiResult } = userInfo;
   const vercelUrl = "http://mbti-freetest.vercel.app/";
 
@@ -36,10 +36,7 @@ const KakaoShareButton = ({ userInfo }) => {
   };
 
   return (
-    <button
-      onClick={shareKakao}
-      className="w-[140px] bg-yellow-300 rounded-lg transition delay-100 duration-200 ease-in-out hover:bg-yellow-400"
-    >
+    <button onClick={shareKakao} className={buttonStyle}>
       카카오톡 공유하기
     </button>
   );

@@ -1,8 +1,12 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { mbtiDescriptions } from "../../../utils/mbtiCalculator";
 import { TwText } from "../../../styles/TwTextStyle";
+import KakaoShareButton from "../all-test-result-page/KakaoShareButton";
+import useAuthStore from "../../../zustand/authStore";
 
 const MyResultItem = () => {
+  const { userInfo } = useAuthStore((state) => state);
+
   const [searchParams] = useSearchParams();
   const myMbti = searchParams.get("mbti");
 
@@ -16,9 +20,17 @@ const MyResultItem = () => {
         className={TwText.subTitleStyle}
       >{`당신의 MBTI는 ${myMbtiDescription[0]}입니다.`}</h2>
       <p className="text-lg/8">{myMbtiDescription[1]}</p>
-      <Link to={"/all-test-results"}>
-        <button className={buttonStyle}>다른 사람 결과 보러 가기</button>
-      </Link>
+      <div className="flex flex-col gap-2">
+        <Link to={"/all-test-results"}>
+          <button className={allResultButtonStyle}>
+            다른 사람 결과 보러 가기
+          </button>
+        </Link>
+        <KakaoShareButton
+          userInfo={{ nickname: userInfo.nickname, mbtiResult: myMbti }}
+          buttonStyle={buttonStyle}
+        />
+      </div>
     </div>
   );
 };
@@ -26,5 +38,8 @@ const MyResultItem = () => {
 export default MyResultItem;
 
 /** Tailwind Style */
-const buttonStyle =
+const allResultButtonStyle =
   "w-[600px] h-[50px] rounded-lg text-white bg-blue-500 transition delay-100 duration-200 ease-in-out hover:bg-blue-600";
+
+const buttonStyle =
+  "w-[600px] h-[50px] rounded-lg bg-yellow-300 transition delay-100 duration-200 ease-in-out hover:bg-yellow-400";
