@@ -4,8 +4,15 @@ import { ToastContainer } from "react-toastify";
 import App from "./App.jsx";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { STALE_TIME } from "./constants/constants.js";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: STALE_TIME,
+    },
+  },
+});
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
