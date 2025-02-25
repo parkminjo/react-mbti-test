@@ -10,8 +10,16 @@ const AuthForm = () => {
   const mode = location.pathname;
   const isLoginMode = mode === "/login";
 
-  const { setIsLogin, setUserInfo } = useAuthStore((state) => state);
   const navigate = useNavigate();
+  const { setIsLogin, setUserInfo } = useAuthStore((state) => state);
+  const loginInputList = [
+    { id: "id", type: "text", placeholder: "아이디" },
+    { id: "password", type: "password", placeholder: "비밀번호" },
+  ];
+  const signupInputList = [
+    { id: "passwordCheck", type: "password", placeholder: "비밀번호" },
+    { id: "nickname", type: "text", placeholder: "닉네임" },
+  ];
 
   /** State */
   const [inputValue, setInputValue] = useState({
@@ -71,42 +79,33 @@ const AuthForm = () => {
         onSubmit={isLoginMode ? handleLogin : handleSignup}
         className={formStyle}
       >
-        <input
-          type="text"
-          placeholder="아이디"
-          id="id"
-          value={id}
-          onChange={handleChange}
-          className={inputStyle}
-        />
-        <input
-          type="password"
-          placeholder="비밀번호"
-          id="password"
-          value={password}
-          onChange={handleChange}
-          className={inputStyle}
-        />
-        {!isLoginMode && (
-          <>
+        {loginInputList.map((item) => {
+          return (
             <input
-              type="password"
-              placeholder="비밀번호 확인"
-              id="passwordCheck"
-              value={passwordCheck}
+              key={item.id}
+              type={item.type}
+              placeholder={item.placeholder}
+              id={item.id}
+              value={inputValue[item.id]}
               onChange={handleChange}
               className={inputStyle}
             />
-            <input
-              type="text"
-              placeholder="닉네임"
-              id="nickname"
-              value={nickname}
-              onChange={handleChange}
-              className={inputStyle}
-            />
-          </>
-        )}
+          );
+        })}
+        {!isLoginMode &&
+          signupInputList.map((item) => {
+            return (
+              <input
+                key={item.id}
+                type={item.type}
+                placeholder={item.placeholder}
+                id={item.id}
+                value={inputValue[item.id]}
+                onChange={handleChange}
+                className={inputStyle}
+              />
+            );
+          })}
         <button className={buttonStyle}>
           {isLoginMode ? "로그인하기" : "가입하기"}
         </button>
