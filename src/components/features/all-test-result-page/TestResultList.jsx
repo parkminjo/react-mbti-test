@@ -1,10 +1,10 @@
 import { SPINNER_IMG } from "../../../constants/constants";
-import { useTestResults } from "../../../hooks/useTestResults";
+import { useGetTestResults } from "../../../hooks/useGetTestResults";
 import useAuthStore from "../../../zustand/authStore";
 import TestResultItem from "./TestResultItem";
 
 const TestResultList = () => {
-  const { data: testResults, isPending, isError } = useTestResults();
+  const { data: testResults, isPending, isError } = useGetTestResults();
   const { userInfo } = useAuthStore((state) => state);
 
   if (isPending) {
