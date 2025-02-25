@@ -20,11 +20,16 @@ const TestResultList = () => {
     (result) => result.visibility || result.userId === userInfo.userId
   );
 
-  /** UI */
+  if (!filteredTestResults) {
+    return <p className="mt-5">테스트 결과가 없습니다.</p>;
+  }
+
   return (
     <>
       {filteredTestResults.toReversed().map((result) => {
-        return <TestResultItem key={result.id} result={result} />;
+        return (
+          <TestResultItem key={result.id + result.nickname} result={result} />
+        );
       })}
     </>
   );
