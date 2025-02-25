@@ -12,7 +12,7 @@ import {
 /**
  * 회원가입
  * @param {*} userData
- * @returns response.data.success
+ * @returns isSignupSuccess
  */
 export const register = async (userData) => {
   /** 유효성 검증 */
@@ -53,7 +53,7 @@ export const register = async (userData) => {
 /**
  * 로그인
  * @param {*} userData
- * @returns response.data.success
+ * @returns isLoginSuccess
  */
 export const login = async (userData) => {
   /** 유효성 검증 */
@@ -85,13 +85,13 @@ export const login = async (userData) => {
 /**
  * 사용자 정보 가져오기
  * @param {*} token
- * @returns response.data
+ * @returns userInfo
  */
 export const getUserProfile = async () => {
   try {
-    const { data } = await authAPI.get(USER_END_POINT);
+    const { data: userInfo } = await authAPI.get(USER_END_POINT);
 
-    return data;
+    return userInfo;
   } catch (error) {
     toast.error(error.response.data.message);
   }
@@ -99,7 +99,7 @@ export const getUserProfile = async () => {
 
 /**
  * 사용자 프로필 업데이트
- * @param {*} formData
+ * @param {*} nickname
  */
 export const updateProfile = async ({ nickname }) => {
   try {
