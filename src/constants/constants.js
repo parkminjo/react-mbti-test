@@ -8,4 +8,4 @@ export const TEST_CHECK_MESSAGE = "테스트를 진행해주세요.";
 
 export const KAKAO_IMAGE_URL = "https://ifh.cc/g/3RxcT9.png";
 
-export const SPINNER_IMG_PATH = "/public/img/spinner.gif";
+export const SPINNER_IMG = "/src/assets/spinner.gif";

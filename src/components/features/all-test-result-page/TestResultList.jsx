@@ -1,6 +1,5 @@
-import { SPINNER_IMG_PATH } from "../../../constants/constants";
+import { SPINNER_IMG } from "../../../constants/constants";
 import { useTestResults } from "../../../hooks/useTestResults";
-import { TwText } from "../../../styles/TwTextStyle";
 import useAuthStore from "../../../zustand/authStore";
 import TestResultItem from "./TestResultItem";
 
@@ -9,7 +8,7 @@ const TestResultList = () => {
   const { userInfo } = useAuthStore((state) => state);
 
   if (isPending) {
-    return <img src={SPINNER_IMG_PATH} alt="스피너 gif" />;
+    return <img src={SPINNER_IMG} alt="스피너 gif" />;
   }
 
   if (isError) {
