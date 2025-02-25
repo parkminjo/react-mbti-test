@@ -10,4 +10,4 @@ export const KAKAO_IMG_URL = "https://ifh.cc/g/3RxcT9.png";
 
 export const SPINNER_IMG = "https://ifh.cc/g/Y0rdgo.gif";
 
-export const STALE_TIME = 60 * 1000;
+export const STALE_TIME_1M = 60 * 1000;

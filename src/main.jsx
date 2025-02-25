@@ -1,15 +1,15 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ToastContainer } from "react-toastify";
 import App from "./App.jsx";
+import { STALE_TIME_1M } from "./constants/constants.js";
 import "./index.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { STALE_TIME } from "./constants/constants.js";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: STALE_TIME,
+      staleTime: STALE_TIME_1M,
     },
   },
 });
