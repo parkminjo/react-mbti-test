@@ -9,4 +9,5 @@ export const ERROR_MESSAGES = {
   TEST_RESULTS_ADD: "테스트 결과를 추가하는데 문제가 발생하였습니다.",
   TEST_RESULTS_DELETE: "테스트 결과를 삭제하는데 문제가 발생하였습니다.",
   TEST_RESULTS_UPDATE: "공개 여부를 변경하는데 문제가 발생하였습니다.",
+  MBTI_INPUT_CHECK: "MBTI를 다시 입력해주세요.",
 };

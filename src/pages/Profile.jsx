@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { updateProfile } from "../api/auth";
 import { TEST_CHECK_MESSAGE } from "../constants/constants";
+import { ERROR_MESSAGES } from "../constants/errorMessages";
 import { TwText } from "../styles/TwTextStyle";
 import useAuthStore from "../zustand/authStore";
-import { toast } from "react-toastify";
 
 const Profile = () => {
   /** State */
@@ -27,7 +28,7 @@ const Profile = () => {
     /** MBTI 형식 검사 */
     const mbtiPattern = /^(?:[EI]{1}[NS]{1}[FT]{1}[JP]{1})$/;
     if (userProfile.mbti !== mbtiPattern) {
-      toast.error("MBTI를 다시 입력해주세요.");
+      toast.error(ERROR_MESSAGES.MBTI_INPUT_CHECK);
       return;
     }
 
