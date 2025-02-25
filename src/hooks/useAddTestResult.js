@@ -7,8 +7,19 @@ export const useAddTestResult = () => {
 
   return useMutation({
     mutationFn: createTestResult,
-    onSuccess: queryClient.invalidateQueries({
-      queryKey: [QUERY_KEY],
-    }),
+    onMutate: async (testResult) => {
+      await queryClient.cancelQueries({ queryKey: [QUERY_KEY] });
+
+      const prevTestResults = queryClient.getQueryData([QUERY_KEY]);
+
+      queryClient.setQueryData([QUERY_KEY], (old) => [...old, testResult]);
+      return { prevTestResults };
+    },
+    onError: (_, __, context) => {
+      queryClient.setQueryData([QUERY_KEY], context.prevTestResults);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
+    },
   });
 };

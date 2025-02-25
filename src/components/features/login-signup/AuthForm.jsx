@@ -18,7 +18,7 @@ const AuthForm = () => {
     { id: "password", type: "password", placeholder: "비밀번호" },
   ];
   const signupInputList = [
-    { id: "passwordCheck", type: "password", placeholder: "비밀번호" },
+    { id: "passwordCheck", type: "password", placeholder: "비밀번호 확인" },
     { id: "nickname", type: "text", placeholder: "닉네임" },
   ];
 

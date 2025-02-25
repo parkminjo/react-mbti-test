@@ -22,11 +22,11 @@ const TestResultList = () => {
 
   /** UI */
   return (
-    <div>
+    <>
       {filteredTestResults.toReversed().map((result) => {
         return <TestResultItem key={result.id} result={result} />;
       })}
-    </div>
+    </>
   );
 };
 
