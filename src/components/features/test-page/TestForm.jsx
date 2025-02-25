@@ -9,7 +9,6 @@ import useAuthStore from "../../../zustand/authStore";
 
 const TestForm = () => {
   const navigate = useNavigate();
-  const addTestResultMutation = useAddTestResult();
 
   /** State */
   const [answers, setAnswers] = useState(
@@ -24,6 +23,8 @@ const TestForm = () => {
     newAnswers[i] = { type, answer: option };
     setAnswers(newAnswers);
   };
+
+  const addTestResultMutation = useAddTestResult();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

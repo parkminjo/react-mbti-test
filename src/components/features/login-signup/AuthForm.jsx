@@ -12,6 +12,7 @@ const AuthForm = () => {
 
   const navigate = useNavigate();
   const { setIsLogin, setUserInfo } = useAuthStore((state) => state);
+
   const loginInputList = [
     { id: "id", type: "text", placeholder: "아이디" },
     { id: "password", type: "password", placeholder: "비밀번호" },
