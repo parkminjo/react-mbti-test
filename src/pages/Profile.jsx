@@ -31,9 +31,12 @@ const Profile = () => {
       return;
     }
 
+    /** 프로필 업데이트 */
     await updateProfile({
       nickname: userProfile.nickname,
     });
+
+    /** 사용자 정보 업데이트 */
     setUserInfo({
       nickname: userProfile.nickname,
       mbtiResult: userProfile.mbti,
