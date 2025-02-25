@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { KAKAO_IMAGE_URL } from "../../../constants/constants";
+import { KAKAO_IMG_URL } from "../../../constants/constants";
 const { Kakao } = window;
 
 const KakaoShareButton = ({ userInfo, buttonStyle }) => {
@@ -20,7 +20,7 @@ const KakaoShareButton = ({ userInfo, buttonStyle }) => {
       content: {
         title: "MBTI 테스트 결과 공유",
         description: `${nickname}님의 MBTI는 ${mbtiResult}입니다.`,
-        imageUrl: `${KAKAO_IMAGE_URL}`,
+        imageUrl: `${KAKAO_IMG_URL}`,
         link: {
           mobileWebUrl: vercelUrl,
         },
