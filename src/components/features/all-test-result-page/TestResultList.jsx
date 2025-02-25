@@ -1,3 +1,4 @@
+import { SPINNER_IMG_PATH } from "../../../constants/constants";
 import { useTestResults } from "../../../hooks/useTestResults";
 import { TwText } from "../../../styles/TwTextStyle";
 import useAuthStore from "../../../zustand/authStore";
@@ -8,11 +9,7 @@ const TestResultList = () => {
   const { userInfo } = useAuthStore((state) => state);
 
   if (isPending) {
-    return (
-      <div className="w-full max-w-[600px] h-[300px] bg-gray-200 rounded-lg flex justify-center items-center mb-10">
-        <h1 className={TwText.subTitleStyle}>Loading...</h1>
-      </div>
-    );
+    return <img src={SPINNER_IMG_PATH} alt="스피너 gif" />;
   }
 
   if (isError) {
