@@ -27,7 +27,7 @@ const Profile = () => {
 
     /** MBTI 형식 검사 */
     const mbtiPattern = /^(?:[EI]{1}[NS]{1}[FT]{1}[JP]{1})$/;
-    if (userProfile.mbti !== mbtiPattern) {
+    if (!mbtiPattern.test(userProfile.mbti)) {
       toast.error(ERROR_MESSAGES.MBTI_INPUT_CHECK);
       return;
     }
