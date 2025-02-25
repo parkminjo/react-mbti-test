@@ -12,6 +12,7 @@ const TestResultItem = ({ result }) => {
   const { userInfo } = useAuthStore((state) => state);
   const isOwner = userId === userInfo.userId;
 
+  /** Mutation */
   const deleteTestResultMutation = useDeleteTestResult();
   const updateVisibilityMutation = useUpdateTestVisibility();
 

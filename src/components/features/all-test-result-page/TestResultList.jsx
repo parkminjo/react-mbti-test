@@ -14,6 +14,7 @@ const TestResultList = () => {
     return <p className="mt-5">데이터를 가져오는 중 에러가 발생하였습니다.</p>;
   }
 
+  /** 공개된 테스트 결과와 본인 테스트 결과 */
   const filteredTestResults = testResults.filter(
     (result) => result.visibility || result.userId === userInfo.userId
   );

@@ -13,6 +13,7 @@ const KakaoShareButton = ({ userInfo, buttonStyle }) => {
     }
   }, []);
 
+  /** 카카오톡으로 공유하는 함수 */
   const shareKakao = () => {
     Kakao.Share.sendDefault({
       objectType: "feed",

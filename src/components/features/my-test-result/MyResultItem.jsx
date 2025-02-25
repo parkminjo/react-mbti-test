@@ -20,6 +20,7 @@ const MyResultItem = () => {
         className={TwText.subTitleStyle}
       >{`당신의 MBTI는 ${myMbtiDescription[0]}입니다.`}</h2>
       <p className="text-lg/8">{myMbtiDescription[1]}</p>
+
       <div className="flex flex-col gap-2">
         <Link to={"/all-test-results"}>
           <button className={allResultButtonStyle}>

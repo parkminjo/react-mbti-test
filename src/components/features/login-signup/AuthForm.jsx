@@ -11,7 +11,6 @@ const AuthForm = () => {
   const isLoginMode = mode === "/login";
 
   const { setIsLogin, setUserInfo } = useAuthStore((state) => state);
-
   const navigate = useNavigate();
 
   /** State */

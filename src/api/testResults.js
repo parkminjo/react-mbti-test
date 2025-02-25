@@ -44,7 +44,10 @@ export const deleteTestResult = async (testId) => {
  * 테스트 결과 공개 여부 변경
  * @param {*} testId, visibility
  */
-export const updateTestResultVisibility = async ({ testId, visibility }) => {
+export const updateTestResultVisibility = async ({
+  id: testId,
+  visibility,
+}) => {
   try {
     await jsonAPI.patch(JSON_END_POINT + `/${testId}`, {
       visibility: !visibility,
