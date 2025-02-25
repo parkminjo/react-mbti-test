@@ -7,11 +7,11 @@ const TestResultList = () => {
   const { userInfo } = useAuthStore((state) => state);
 
   if (isPending) {
-    return <p className="mt-10">Loading...</p>;
+    return <p className="mt-5">Loading...</p>;
   }
 
   if (isError) {
-    return <p className="mt-10">데이터를 가져오는 중 에러가 발생하였습니다.</p>;
+    return <p className="mt-5">데이터를 가져오는 중 에러가 발생하였습니다.</p>;
   }
 
   const filteredTestResults = testResults.filter(
