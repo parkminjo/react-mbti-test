@@ -4,6 +4,7 @@ import { updateProfile } from "../api/auth";
 import { TEST_CHECK_MESSAGE } from "../constants/constants";
 import { TwText } from "../styles/TwTextStyle";
 import useAuthStore from "../zustand/authStore";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   /** State */
@@ -22,6 +23,13 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    /** MBTI 형식 검사 */
+    const mbtiPattern = /^(?:[EI]{1}[NS]{1}[FT]{1}[JP]{1})$/;
+    if (userProfile.mbti !== mbtiPattern) {
+      toast.error("MBTI를 다시 입력해주세요.");
+      return;
+    }
 
     await updateProfile({
       nickname: userProfile.nickname,
