@@ -7,10 +7,24 @@ export const useUpdateTestVisibility = () => {
 
   return useMutation({
     mutationFn: updateTestResultVisibility,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY],
-      });
+    onMutate: async ({ id: testId, visibility }) => {
+      await queryClient.cancelQueries({ queryKey: [QUERY_KEY] });
+
+      const prevTestResults = queryClient.getQueryData([QUERY_KEY]);
+
+      queryClient.setQueryData([QUERY_KEY], (old) =>
+        old.map((test) =>
+          test.id === testId ? { ...test, visibility: !visibility } : test
+        )
+      );
+
+      return { prevTestResults };
+    },
+    onError: (_, __, context) => {
+      queryClient.setQueryData([QUERY_KEY], context.prevTestResults);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
     },
   });
 };
