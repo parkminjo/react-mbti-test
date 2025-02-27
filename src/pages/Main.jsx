@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ERROR_MESSAGES } from "../constants/errorMessages";
 import useAuthStore from "../zustand/authStore";
@@ -8,6 +8,8 @@ import { cardContentList } from "../data/main/cardContentList";
 import { PATH } from "../constants/routerPathConstants";
 
 const Main = () => {
+  const navigate = useNavigate();
+
   /** State */
   const isLogin = useAuthStore((state) => state.isLogin);
 
@@ -15,7 +17,10 @@ const Main = () => {
   const handleClick = () => {
     if (!isLogin) {
       toast.error(ERROR_MESSAGES.LOGIN_CHECK);
+      navigate(PATH.LOGIN);
+      return;
     }
+    navigate(PATH.TEST);
   };
 
   /** UI */
@@ -30,11 +35,9 @@ const Main = () => {
           return <Card key={cardContent.id} cardContent={cardContent} />;
         })}
       </div>
-      <Link to={PATH.TEST}>
-        <button onClick={handleClick} className={buttonStyle}>
-          내 성격 알아보러 가기
-        </button>
-      </Link>
+      <button onClick={handleClick} className={buttonStyle}>
+        내 성격 알아보러 가기
+      </button>
     </div>
   );
 };
