@@ -9,7 +9,7 @@ const AuthForm = () => {
   /** 경로에 따라 로그인/회원가입 로직이 달라짐 */
   const location = useLocation();
   const mode = location.pathname;
-  const isLoginMode = mode === "/login";
+  const isLoginMode = mode === PATH.LOGIN;
 
   const navigate = useNavigate();
   const setIsLogin = useAuthStore((state) => state.setIsLogin);
