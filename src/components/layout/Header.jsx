@@ -4,7 +4,8 @@ import clsx from "clsx";
 import { PATH } from "../../constants/routerPathConstants";
 
 const Header = () => {
-  const { isLogin, setIsLogin } = useAuthStore((state) => state);
+  const isLogin = useAuthStore((state) => state.isLogin);
+  const setIsLogin = useAuthStore((state) => state.setIsLogin);
 
   const navList = [
     { to: PATH.PROFILE, label: "프로필" },

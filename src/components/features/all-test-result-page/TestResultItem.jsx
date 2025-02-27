@@ -9,7 +9,7 @@ const TestResultItem = ({ result }) => {
   const { id, nickname, mbtiResult, userId, date, visibility } = result;
 
   const myMbtiDescription = mbtiDescriptions[mbtiResult].split(":");
-  const { userInfo } = useAuthStore((state) => state);
+  const userInfo = useAuthStore((state) => state.userInfo);
   const isOwner = userId === userInfo.userId;
 
   /** Mutation */

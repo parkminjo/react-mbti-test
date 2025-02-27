@@ -15,7 +15,8 @@ const TestForm = () => {
     Array(questions.length).fill({ type: "", answer: "" })
   );
 
-  const { userInfo, setUserInfo } = useAuthStore((state) => state);
+  const userInfo = useAuthStore((state) => state.userInfo);
+  const setUserInfo = useAuthStore((state) => state.setUserInfo);
 
   /** Function */
   const handleChange = (i, type, option) => {

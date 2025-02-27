@@ -17,12 +17,12 @@ import useAuthStore from "../zustand/authStore";
 import { PATH } from "../constants/routerPathConstants";
 
 const PrivateRoute = () => {
-  const { isLogin } = useAuthStore((state) => state);
+  const isLogin = useAuthStore((state) => state.isLogin);
   return isLogin ? <Outlet /> : <Navigate to="/login" />;
 };
 
 const PublicRoute = () => {
-  const { isLogin } = useAuthStore((state) => state);
+  const isLogin = useAuthStore((state) => state.isLogin);
   return !isLogin ? <Outlet /> : <Navigate to="/" />;
 };
 

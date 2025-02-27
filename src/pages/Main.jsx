@@ -9,7 +9,7 @@ import { PATH } from "../constants/routerPathConstants";
 
 const Main = () => {
   /** State */
-  const { isLogin } = useAuthStore((state) => state);
+  const isLogin = useAuthStore((state) => state.isLogin);
 
   /** Function */
   const handleClick = () => {

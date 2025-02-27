@@ -5,7 +5,7 @@ import TestResultItem from "./TestResultItem";
 
 const TestResultList = () => {
   const { data: testResults, isPending, isError } = useGetTestResults();
-  const { userInfo } = useAuthStore((state) => state);
+  const userInfo = useAuthStore((state) => state.userInfo);
 
   if (isPending) {
     return <img src={SPINNER_IMG} alt="스피너 gif" />;
