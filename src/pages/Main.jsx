@@ -5,6 +5,7 @@ import useAuthStore from "../zustand/authStore";
 import { TwText } from "../styles/TwTextStyle";
 import Card from "../components/features/main/Card";
 import { cardContentList } from "../data/main/cardContentList";
+import { PATH } from "../constants/routerPathConstants";
 
 const Main = () => {
   /** State */
@@ -29,7 +30,7 @@ const Main = () => {
           return <Card key={cardContent.id} cardContent={cardContent} />;
         })}
       </div>
-      <Link to={"/test"}>
+      <Link to={PATH.TEST}>
         <button onClick={handleClick} className={buttonStyle}>
           내 성격 알아보러 가기
         </button>

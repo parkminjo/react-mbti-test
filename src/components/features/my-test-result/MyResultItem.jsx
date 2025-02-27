@@ -3,9 +3,10 @@ import { mbtiDescriptions } from "../../../utils/mbtiCalculator";
 import { TwText } from "../../../styles/TwTextStyle";
 import KakaoShareButton from "../all-test-result-page/KakaoShareButton";
 import useAuthStore from "../../../zustand/authStore";
+import { PATH } from "../../../constants/routerPathConstants";
 
 const MyResultItem = () => {
-  const { userInfo } = useAuthStore((state) => state);
+  const userInfo = useAuthStore((state) => state.userInfo);
 
   const [searchParams] = useSearchParams();
   const myMbti = searchParams.get("mbti");
@@ -22,7 +23,7 @@ const MyResultItem = () => {
       <p className="text-lg/8">{myMbtiDescription[1]}</p>
 
       <div className="flex flex-col gap-2">
-        <Link to={"/all-test-results"}>
+        <Link to={PATH.ALL_TEST_RESULTS}>
           <button className={allResultButtonStyle}>
             다른 사람 결과 보러 가기
           </button>
