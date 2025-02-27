@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuthStore from "../../zustand/authStore";
+import clsx from "clsx";
 
 const Header = () => {
   const { isLogin, setIsLogin } = useAuthStore((state) => state);
@@ -25,16 +26,26 @@ const Header = () => {
         {isLogin ? (
           <div className="flex gap-3 sm:gap-5">
             {navList.map(({ to, label }) => (
-              <Link to={to} key={label} className={contentLinkStyle}>
+              <Link
+                to={to}
+                key={label}
+                className={clsx(baseLinkStyle, "hover:text-blue-400")}
+              >
                 {label}
               </Link>
             ))}
-            <button onClick={handleLogout} className={linkStyle}>
+            <button
+              onClick={handleLogout}
+              className={clsx(baseLinkStyle, "hover:text-white")}
+            >
               로그아웃
             </button>
           </div>
         ) : (
-          <Link to={"/login"} className={linkStyle}>
+          <Link
+            to={"/login"}
+            className={clsx(baseLinkStyle, "hover:text-white")}
+          >
             로그인
           </Link>
         )}
@@ -49,8 +60,5 @@ export default Header;
 const logoStyle =
   "font-semibold text-2xl transition delay-100 duration-200 ease-in-out hover:text-gray-300";
 
-const contentLinkStyle =
-  "text-gray-300 transition delay-100 duration-200 ease-in-out hover:text-blue-400";
-
-const linkStyle =
-  "text-gray-300 transition delay-100 duration-200 ease-in-out hover:text-white";
+const baseLinkStyle =
+  "text-gray-300 transition delay-100 duration-200 ease-in-out";
