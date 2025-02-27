@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getUserProfile, login, register } from "../../../api/auth";
 import { TwText } from "../../../styles/TwTextStyle";
 import useAuthStore from "../../../zustand/authStore";
+import { PATH } from "../../../constants/routerPathConstants";
 
 const AuthForm = () => {
   /** 경로에 따라 로그인/회원가입 로직이 달라짐 */
@@ -115,7 +116,10 @@ const AuthForm = () => {
         <span>
           {isLoginMode ? "계정이 없으신가요?" : "이미 계정이 있으신가요?"}
         </span>
-        <Link to={isLoginMode ? "/signup" : "/login"} className="text-blue-500">
+        <Link
+          to={isLoginMode ? PATH.SIGNUP : PATH.LOGIN}
+          className="text-blue-500"
+        >
           {isLoginMode ? "회원가입" : "로그인"}
         </Link>
       </div>
