@@ -12,15 +12,15 @@ const MyResultItem = () => {
   const myMbti = searchParams.get("mbti");
 
   /** 해당 MBTI 설명 */
-  const myMbtiDescription = mbtiDescriptions[myMbti].split(":");
+  const [mbtiName, description] = mbtiDescriptions[myMbti].split(":");
 
   /** UI */
   return (
     <div className="w-full max-w-[600px] flex flex-col gap-5">
       <h2
         className={TwText.subTitleStyle}
-      >{`당신의 MBTI는 ${myMbtiDescription[0]}입니다.`}</h2>
-      <p className="text-lg/8">{myMbtiDescription[1]}</p>
+      >{`당신의 MBTI는 ${mbtiName}입니다.`}</h2>
+      <p className="text-lg/8">{description}</p>
 
       <div className="flex flex-col gap-2">
         <Link to={PATH.ALL_TEST_RESULTS}>
