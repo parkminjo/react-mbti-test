@@ -8,6 +8,7 @@ import {
   SIGNUP_END_POINT,
   USER_END_POINT,
 } from "../constants/authConstants";
+import { ACCESS_TOKEN } from "../constants/constants";
 
 /**
  * 회원가입
@@ -72,7 +73,7 @@ export const login = async (userData) => {
     const isLoginSuccess = data.success;
 
     if (isLoginSuccess) {
-      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem(ACCESS_TOKEN, data.accessToken);
       toast.info(INFO_MESSAGES.LOGIN_SUCCESS);
 
       return isLoginSuccess;

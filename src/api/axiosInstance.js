@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ACCESS_TOKEN } from "../constants/constants";
 
 /** 회원가입/로그인을 위한 API */
 export const authAPI = axios.create({
@@ -6,7 +7,7 @@ export const authAPI = axios.create({
 });
 
 authAPI.interceptors.request.use((config) => {
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem(ACCESS_TOKEN);
   if (token) {
     config.headers["Authorization"] = `Bearer ${token}`;
   }
