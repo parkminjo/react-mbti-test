@@ -7,12 +7,14 @@ const useAuthStore = create(
     immer((set) => {
       return {
         isLogin: !!localStorage.getItem("accessToken"),
-        setIsLogin: (value) => set({ isLogin: value }),
         userInfo: null,
-        setUserInfo: (value) => {
-          set((state) => {
-            state.userInfo = { ...state.userInfo, ...value };
-          });
+        actions: {
+          setIsLogin: (value) => set({ isLogin: value }),
+          setUserInfo: (value) => {
+            set((state) => {
+              state.userInfo = { ...state.userInfo, ...value };
+            });
+          },
         },
       };
     }),

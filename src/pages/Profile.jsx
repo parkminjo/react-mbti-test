@@ -11,7 +11,7 @@ import { PATH } from "../constants/routerPathConstants";
 const Profile = () => {
   /** State */
   const userInfo = useAuthStore((state) => state.userInfo);
-  const setUserInfo = useAuthStore((state) => state.setUserInfo);
+  const { setUserInfo } = useAuthStore((state) => state.actions);
 
   const [userProfile, setUserProfile] = useState({
     nickname: userInfo.nickname,

@@ -5,7 +5,7 @@ import { PATH } from "../../constants/routerPathConstants";
 
 const Header = () => {
   const isLogin = useAuthStore((state) => state.isLogin);
-  const setIsLogin = useAuthStore((state) => state.setIsLogin);
+  const { setIsLogin } = useAuthStore((state) => state.actions);
 
   const navList = [
     { to: PATH.PROFILE, label: "프로필" },

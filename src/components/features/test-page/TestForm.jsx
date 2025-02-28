@@ -16,7 +16,7 @@ const TestForm = () => {
   );
 
   const userInfo = useAuthStore((state) => state.userInfo);
-  const setUserInfo = useAuthStore((state) => state.setUserInfo);
+  const { setUserInfo } = useAuthStore((state) => state.actions);
 
   /** Function */
   const handleChange = (i, type, option) => {
