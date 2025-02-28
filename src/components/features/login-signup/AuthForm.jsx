@@ -12,7 +12,8 @@ const AuthForm = () => {
   const isLoginMode = mode === PATH.LOGIN;
 
   const navigate = useNavigate();
-  const { setIsLogin, setUserInfo } = useAuthStore((state) => state.actions);
+  const setIsLogin = useAuthStore((state) => state.setIsLogin);
+  const setUserInfo = useAuthStore((state) => state.setUserInfo);
 
   const loginInputList = [
     { id: "id", type: "text", placeholder: "아이디" },

@@ -8,13 +8,11 @@ const useAuthStore = create(
       return {
         isLogin: !!localStorage.getItem("accessToken"),
         userInfo: null,
-        actions: {
-          setIsLogin: (value) => set({ isLogin: value }),
-          setUserInfo: (value) => {
-            set((state) => {
-              state.userInfo = { ...state.userInfo, ...value };
-            });
-          },
+        setIsLogin: (value) => set({ isLogin: value }),
+        setUserInfo: (newUserInfo) => {
+          set((state) => {
+            state.userInfo = { ...state.userInfo, ...newUserInfo };
+          });
         },
       };
     }),

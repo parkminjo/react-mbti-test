@@ -16,7 +16,7 @@ const TestForm = () => {
   );
 
   const userInfo = useAuthStore((state) => state.userInfo);
-  const { setUserInfo } = useAuthStore((state) => state.actions);
+  const setUserInfo = useAuthStore((state) => state.setUserInfo);
 
   /** Function */
   const handleChange = (i, type, option) => {
@@ -40,7 +40,7 @@ const TestForm = () => {
       date: new Date().toLocaleString(KOREAN),
       visibility: false,
     });
-    setUserInfo({ mbtiResult });
+    setUserInfo((prev) => ({ ...prev, mbtiResult }));
 
     navigate(`/my-test-result?mbti=${mbtiResult}`);
   };
