@@ -58,7 +58,7 @@ const AuthForm = () => {
       const { id, nickname } = await getUserProfile();
       setUserInfo({ userId: id, nickname });
       reset();
-      navigate("/");
+      navigate(PATH.MAIN);
     }
   };
 
@@ -68,7 +68,7 @@ const AuthForm = () => {
     const isSignup = await register({ id, password, passwordCheck, nickname });
     if (isSignup) {
       reset();
-      navigate("/login");
+      navigate(PATH.LOGIN);
     }
   };
 
