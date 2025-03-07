@@ -13,13 +13,13 @@ const TestResultItem = ({ result }) => {
   const isOwner = userId === userInfo.userId;
 
   /** Mutation */
-  const deleteTestResultMutation = useDeleteTestResult();
-  const updateVisibilityMutation = useUpdateTestVisibility();
+  const { mutate: deleteTestResultMutate } = useDeleteTestResult();
+  const { mutate: updateVisibilityMutate } = useUpdateTestVisibility();
 
   /** UI */
   return (
     <div className={containerStyle}>
-      <div className="flex justify-between items-baseline">
+      <div className="flex items-baseline justify-between">
         <h1 className={TwText.subTitleStyle}>{nickname}</h1>
         <p className="text-gray-500">{date}</p>
       </div>
@@ -30,7 +30,7 @@ const TestResultItem = ({ result }) => {
       {isOwner && (
         <div className="flex justify-end gap-2">
           <button
-            onClick={() => updateVisibilityMutation.mutate({ id, visibility })}
+            onClick={() => updateVisibilityMutate({ id, visibility })}
             className={visibilityButtonStyle}
           >
             {visibility ? "비공개 하기" : "공개 하기"}
@@ -40,7 +40,7 @@ const TestResultItem = ({ result }) => {
             buttonStyle={buttonStyle}
           />
           <button
-            onClick={() => deleteTestResultMutation.mutate(id)}
+            onClick={() => deleteTestResultMutate(id)}
             className={deleteButtonStyle}
           >
             삭제
