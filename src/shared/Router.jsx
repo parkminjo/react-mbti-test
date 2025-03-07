@@ -18,12 +18,12 @@ import { PATH } from "../constants/routerPathConstants";
 
 const PrivateRoute = () => {
   const isLogin = useAuthStore((state) => state.isLogin);
-  return isLogin ? <Outlet /> : <Navigate to="/login" />;
+  return isLogin ? <Outlet /> : <Navigate to={PATH.LOGIN} />;
 };
 
 const PublicRoute = () => {
   const isLogin = useAuthStore((state) => state.isLogin);
-  return !isLogin ? <Outlet /> : <Navigate to="/" />;
+  return !isLogin ? <Outlet /> : <Navigate to={PATH.MAIN} />;
 };
 
 const Router = () => {
